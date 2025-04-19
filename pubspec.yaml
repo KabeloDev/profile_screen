@@ -65,6 +65,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
       - assets/default-profile.jpg
+      - assets/me.png
       - assets/profile1.jpg
       - assets/profile2.jpg 
       - assets/profile3.jpg

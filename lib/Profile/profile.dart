@@ -13,10 +13,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class ProfileScreenState extends State<ProfileScreen> {
-  String firstName = 'John';
-  String lastName = 'Doe';
+  String firstName = 'Kabelo';
+  String lastName = 'Makhanya';
   String bio = 'I am a software developer.';
-  String profilePicture = 'assets/default-profile.jpg';
+  String profilePicture = 'assets/me.png';
   List<String> interests = [
     'Coding',
     'Photography',
