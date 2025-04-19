@@ -75,7 +75,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('lib/Assets/default-profile.jpg'),
+                backgroundImage: AssetImage('assets/default-profile.jpg'),
               ),
               SizedBox(height: 16),
               Text(

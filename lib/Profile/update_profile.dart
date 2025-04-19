@@ -5,11 +5,7 @@ class Profile {
   String lastName;
   String bio;
 
-  Profile({
-    required this.firstName,
-    required this.lastName,
-    required this.bio,
-  });
+  Profile({required this.firstName, required this.lastName, required this.bio});
 }
 
 class UpdateProfileScreen extends StatefulWidget {
@@ -50,9 +46,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Update Profile'),
-      ),
+      appBar: AppBar(title: Text('Update Profile')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -77,7 +71,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   lastNameController.text,
                   bioController.text,
                 );
-                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Profile updated successfully!', style: TextStyle(color: Colors.white),),
+                    duration: Duration(seconds: 2),
+                    backgroundColor: Colors.blueAccent, // You can change the color
+                  ),
+                );
               },
               child: Text('Save'),
             ),
