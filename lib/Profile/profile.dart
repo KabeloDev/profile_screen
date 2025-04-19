@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
@@ -15,6 +16,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   String firstName = 'John';
   String lastName = 'Doe';
   String bio = 'I am a software developer.';
+  String profilePicture = 'assets/default-profile.jpg';
   List<String> interests = [
     'Coding',
     'Photography',
@@ -23,11 +25,14 @@ class ProfileScreenState extends State<ProfileScreen> {
     'Music',
   ];
 
-  void updateProfile(String updatedFirstName, String updatedLastName, String updatedBio) {
+  void updateProfile(String updatedFirstName, String updatedLastName, String updatedBio,
+      String updatedProfilePicture, List<String> updatedInterests) {
     setState(() {
       firstName = updatedFirstName;
       lastName = updatedLastName;
       bio = updatedBio;
+      profilePicture = updatedProfilePicture;
+      interests = updatedInterests;
     });
   }
 
@@ -47,6 +52,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                     firstName: firstName,
                     lastName: lastName,
                     bio: bio,
+                    profilePicture: profilePicture,
+                    interests: interests,
                   ),
                   onUpdate: updateProfile,
                 ),
@@ -75,7 +82,9 @@ class ProfileScreenState extends State<ProfileScreen> {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/default-profile.jpg'),
+                backgroundImage: profilePicture.startsWith('assets/')
+                    ? AssetImage(profilePicture) as ImageProvider
+                    : FileImage(File(profilePicture)),
               ),
               SizedBox(height: 16),
               Text(
