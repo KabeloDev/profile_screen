@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:profile_screen/Profile/update_profile.dart';
 import 'package:provider/provider.dart';
 import '../Mode/mode.dart';
 
@@ -22,13 +23,38 @@ class ProfileScreenState extends State<ProfileScreen> {
     'Music',
   ];
 
+  void updateProfile(String updatedFirstName, String updatedLastName, String updatedBio) {
+    setState(() {
+      firstName = updatedFirstName;
+      lastName = updatedLastName;
+      bio = updatedBio;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UpdateProfileScreen(
+                  profile: Profile(
+                    firstName: firstName,
+                    lastName: lastName,
+                    bio: bio,
+                  ),
+                  onUpdate: updateProfile,
+                ),
+              ),
+            );
+          },
+          icon: Icon(Icons.edit),
+        ),
         title: Text('Profile'),
         centerTitle: true,
         actions: [
