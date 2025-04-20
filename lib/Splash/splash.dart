@@ -20,7 +20,7 @@ class SplashScreenState extends State<SplashScreen>
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 3),
       vsync: this,
     );
 
@@ -48,7 +48,7 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.grey[900],
       body: Center(
         child: FadeTransition(
           opacity: _animation,
