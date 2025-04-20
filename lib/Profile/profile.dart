@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:profile_screen/Profile/posts.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
 import 'package:provider/provider.dart';
 import '../Mode/mode.dart';
@@ -243,6 +244,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                 ),
                               ),
+                              PostsCarousel()
                             ],
                           ),
                         ),
