@@ -25,8 +25,13 @@ class ProfileScreenState extends State<ProfileScreen> {
     'Music',
   ];
 
-  void updateProfile(String updatedFirstName, String updatedLastName, String updatedBio,
-      String updatedProfilePicture, List<String> updatedInterests) {
+  void updateProfile(
+    String updatedFirstName,
+    String updatedLastName,
+    String updatedBio,
+    String updatedProfilePicture,
+    List<String> updatedInterests,
+  ) {
     setState(() {
       firstName = updatedFirstName;
       lastName = updatedLastName;
@@ -39,6 +44,15 @@ class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
+
+    // Map interests to corresponding icons
+    final Map<String, IconData> interestIcons = {
+      'Coding': Icons.code,
+      'Photography': Icons.camera_alt,
+      'Traveling': Icons.flight_takeoff,
+      'Gaming': Icons.videogame_asset,
+      'Music': Icons.music_note,
+    };
 
     return Scaffold(
       appBar: AppBar(
@@ -69,7 +83,9 @@ class ProfileScreenState extends State<ProfileScreen> {
             onPressed: () {
               modeController.toggleMode();
             },
-            icon: Icon(modeController.isDarkMode ? Icons.light_mode : Icons.dark_mode),
+            icon: Icon(
+              modeController.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+            ),
           ),
         ],
       ),
@@ -104,15 +120,12 @@ class ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(height: 16),
-              const Divider(
-                color: Colors.grey,
-                thickness: 1,
-              ),
+              const Divider(color: Colors.grey, thickness: 1),
               SizedBox(height: 16),
               Text(
                 'Interests',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: modeController.isDarkMode ? Colors.white : Colors.black,
                 ),
@@ -126,29 +139,83 @@ class ProfileScreenState extends State<ProfileScreen> {
                   enableInfiniteScroll: true,
                 ),
                 items: interests.map((interest) {
+                  final icon = interestIcons[interest] ?? Icons.star; // Default icon for user-added interests
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
                         width: MediaQuery.of(context).size.width * 0.8,
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
-                          color: Colors.blueAccent,
+                          color: modeController.isDarkMode
+                              ? Colors.grey[800]!.withAlpha(100)
+                              : Colors.grey[200]!,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Center(
-                          child: Text(
-                            interest,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              icon,
+                              size: 40,
+                              color: modeController.isDarkMode ? Colors.white : Colors.black,
                             ),
-                          ),
+                            SizedBox(width: 16),
+                            Text(
+                              interest,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: modeController.isDarkMode ? Colors.white : Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
                   );
                 }).toList(),
+              ),
+              Expanded(
+                child: Stack(
+                  children: [
+                    Transform.translate(
+                      offset: Offset(20, 50),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              modeController.isDarkMode
+                                  ? Colors.grey[800]!.withAlpha(100)
+                                  : Colors.grey[200],
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Text(
+                                  'Posts',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color:
+                                        modeController.isDarkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

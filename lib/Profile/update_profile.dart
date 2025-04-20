@@ -19,7 +19,6 @@ class Profile {
 class UpdateProfileScreen extends StatefulWidget {
   final Profile profile;
   final Function(String, String, String, String, List<String>) onUpdate;
-  
 
   const UpdateProfileScreen({
     super.key,
@@ -36,8 +35,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   late TextEditingController lastNameController;
   late TextEditingController bioController;
   late TextEditingController interestController;
+  IconData? selectedIcon; // Controller to store the selected icon
   String? updatedProfilePicture;
   List<String> updatedInterests = [];
+  Map<String, IconData> interestIcons =
+      {}; // Map to store interests and their icons
   final List<String> predefinedImages = [
     'assets/profile1.jpg',
     'assets/profile2.jpg',
@@ -45,6 +47,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     'assets/profile4.jpg',
     'assets/profile5.jpg',
     'assets/profile6.jpg',
+  ];
+
+  final List<IconData> predefinedIcons = [
+    Icons.code,
+    Icons.camera_alt,
+    Icons.flight_takeoff,
+    Icons.videogame_asset,
+    Icons.music_note,
+    Icons.star,
+    Icons.sports_soccer,
+    Icons.book,
   ];
 
   @override
@@ -73,10 +86,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     });
   }
 
-  void addInterest(String interest) {
+  void addInterest(String interest, IconData icon) {
     if (!updatedInterests.contains(interest)) {
       setState(() {
         updatedInterests.add(interest);
+        interestIcons[interest] = icon; // Map the interest to the selected icon
       });
     }
   }
@@ -84,13 +98,45 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   void removeInterest(String interest) {
     setState(() {
       updatedInterests.remove(interest);
+      interestIcons.remove(interest); // Remove the icon mapping as well
     });
+  }
+
+  void showIconSelectionDialog(String interest) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Select an Icon'),
+          content: Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children:
+                predefinedIcons.map((icon) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIcon = icon; // Store the selected icon
+                      });
+                      Navigator.pop(context);
+                      addInterest(
+                        interest,
+                        icon,
+                      ); // Add the interest with the selected icon
+                    },
+                    child: Icon(icon, size: 32, color: Colors.blue),
+                  );
+                }).toList(),
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Update Profile'), centerTitle: true,),
+      appBar: AppBar(title: Text('Update Profile'), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -117,19 +163,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: updatedProfilePicture == imagePath
-                              ? Colors.blue
-                              : Colors.transparent,
+                          color:
+                              updatedProfilePicture == imagePath
+                                  ? Colors.blue
+                                  : Colors.transparent,
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          imagePath,
-                          fit: BoxFit.cover,
-                        ),
+                        child: Image.asset(imagePath, fit: BoxFit.cover),
                       ),
                     ),
                   );
@@ -156,16 +200,33 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               SizedBox(height: 8),
               Wrap(
                 spacing: 8.0,
-                children: updatedInterests.map((interest) {
-                  return Chip(
-                    label: Text(interest),
-                    onDeleted: () => removeInterest(interest),
-                  );
-                }).toList(),
+                children:
+                    updatedInterests.map((interest) {
+                      return Chip(
+                        avatar: Icon(
+                          interestIcons[interest] ?? Icons.star,
+                        ), // Display the icon
+                        label: Text(interest),
+                        onDeleted: () => removeInterest(interest),
+                      );
+                    }).toList(),
               ),
-              TextField(
-                controller: interestController,
-                decoration: InputDecoration(labelText: 'Add Interest'),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: interestController,
+                      decoration: InputDecoration(labelText: 'Add Interest'),
+                    ),
+                  ),
+                  SizedBox(width: 40), // spacing between TextField and button
+                  ElevatedButton(
+                    onPressed: () {
+                      showIconSelectionDialog(interestController.text);
+                    },
+                    child: Text('Select Interest Icon'),
+                  ),
+                ],
               ),
               SizedBox(height: 16),
               ElevatedButton(
@@ -177,8 +238,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     updatedProfilePicture ?? widget.profile.profilePicture,
                     updatedInterests,
                   );
-                   if (interestController.text.isNotEmpty) {
-                    addInterest(interestController.text);
+                  if (interestController.text.isNotEmpty) {
+                    addInterest(
+                      interestController.text,
+                      selectedIcon ?? Icons.star,
+                    );
                     interestController.clear();
                   }
                   ScaffoldMessenger.of(context).showSnackBar(
