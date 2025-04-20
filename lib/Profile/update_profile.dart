@@ -18,7 +18,7 @@ class Profile {
 
 class UpdateProfileScreen extends StatefulWidget {
   final Profile profile;
-  final Function(String, String, String, String, List<String>) onUpdate;
+  final Function(String, String, String, String, List<String>, Map<String, IconData>) onUpdate;
 
   const UpdateProfileScreen({
     super.key,
@@ -50,15 +50,64 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   ];
 
   final List<IconData> predefinedIcons = [
-    Icons.code,
-    Icons.camera_alt,
-    Icons.flight_takeoff,
-    Icons.videogame_asset,
-    Icons.music_note,
-    Icons.star,
-    Icons.sports_soccer,
-    Icons.book,
-  ];
+  Icons.code,
+  Icons.camera_alt,
+  Icons.flight_takeoff,
+  Icons.videogame_asset,
+  Icons.music_note,
+  Icons.star,
+  Icons.sports_soccer,
+  Icons.book,
+  Icons.directions_bike,
+  Icons.brush,
+  Icons.android,
+  Icons.spa,
+  Icons.work,
+  Icons.downhill_skiing,
+  Icons.pool,
+  Icons.local_cafe,
+  Icons.hiking,
+  Icons.laptop,
+  Icons.watch,
+  Icons.pets,
+  Icons.build,
+  Icons.chat,
+  Icons.group,
+  Icons.local_hospital,
+  Icons.fitness_center,
+  Icons.shopping_cart,
+  Icons.headset,
+  Icons.local_drink,
+  Icons.location_on,
+  Icons.movie,
+  Icons.music_video,
+  Icons.access_alarm,
+  Icons.accessibility,
+  Icons.airplanemode_active,
+  Icons.all_inbox,
+  Icons.arrow_forward,
+  Icons.assistant,
+  Icons.atm,
+  Icons.bookmark,
+  Icons.camera,
+  Icons.car_rental,
+  Icons.cloud,
+  Icons.cloud_upload,
+  Icons.dashboard,
+  Icons.directions_car,
+  Icons.electric_car,
+  Icons.email,
+  Icons.favorite,
+  Icons.fingerprint,
+  Icons.flash_on,
+  Icons.folder,
+  Icons.gamepad,
+  Icons.golf_course,
+  Icons.hd,
+  Icons.home,
+];
+
+
 
   @override
   void initState() {
@@ -231,13 +280,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  widget.onUpdate(
-                    firstNameController.text,
-                    lastNameController.text,
-                    bioController.text,
-                    updatedProfilePicture ?? widget.profile.profilePicture,
-                    updatedInterests,
-                  );
                   if (interestController.text.isNotEmpty) {
                     addInterest(
                       interestController.text,
@@ -245,6 +287,16 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     );
                     interestController.clear();
                   }
+
+                  widget.onUpdate(
+                    firstNameController.text,
+                    lastNameController.text,
+                    bioController.text,
+                    updatedProfilePicture ?? widget.profile.profilePicture,
+                    updatedInterests,
+                    interestIcons,
+                  );
+                  
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
