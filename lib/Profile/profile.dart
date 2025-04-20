@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:profile_screen/Messages/messages.dart';
 import 'package:profile_screen/Profile/achievements.dart';
 import 'package:profile_screen/Profile/posts.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
 import 'package:profile_screen/Profile/work.dart';
+import 'package:profile_screen/Stats/stats.dart';
 import 'package:provider/provider.dart';
 import '../Mode/mode.dart';
 
@@ -16,7 +18,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class ProfileScreenState extends State<ProfileScreen> {
-  
   String firstName = 'Kabelo';
   String lastName = 'Makhanya';
   String bio = 'I am a software developer.';
@@ -115,9 +116,25 @@ class ProfileScreenState extends State<ProfileScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.analytics_outlined, size: 40,)),
-            SizedBox(width: 30,),
-            IconButton(onPressed: (){}, icon: Icon(Icons.notifications_active, size: 40,)),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => StatsScreen()),
+                );
+              },
+              icon: Icon(Icons.analytics_outlined, size: 40),
+            ),
+            SizedBox(width: 30),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MessagesScreen()),
+                );
+              },
+              icon: Icon(Icons.notifications_active, size: 40),
+            ),
           ],
         ),
       ),
@@ -157,6 +174,32 @@ class ProfileScreenState extends State<ProfileScreen> {
                             : Colors.black87,
                   ),
                 ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '1.2K Followers',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text('|'),
+                    ),
+                    Text(
+                      '267 Likes',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text('|'),
+                    ),
+                    Text(
+                      '980 Following',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 16),
                 const Divider(color: Colors.grey, thickness: 1),
                 SizedBox(height: 16),
@@ -181,7 +224,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       interestIcons.entries.map((entry) {
                         final interest = entry.key;
                         final icon = entry.value;
-        
+
                         return Builder(
                           builder: (context) {
                             return Container(
@@ -224,7 +267,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         );
                       }).toList(),
                 ),
-                SizedBox(height: 16), 
+                SizedBox(height: 16),
                 SizedBox(
                   height: 500,
                   child: Stack(
@@ -250,7 +293,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Posts',
@@ -263,14 +307,17 @@ class ProfileScreenState extends State<ProfileScreen> {
                                                   : Colors.black,
                                         ),
                                       ),
-                                      IconButton(onPressed: (){
-        
-                                      }, icon: Icon(Icons.add_circle_outline,
-                                        color: modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                            size: 30,
-                                      ),),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.add_circle_outline,
+                                          color:
+                                              modeController.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                          size: 30,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -309,7 +356,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Work experience',
@@ -322,14 +370,17 @@ class ProfileScreenState extends State<ProfileScreen> {
                                                   : Colors.black,
                                         ),
                                       ),
-                                      IconButton(onPressed: (){
-        
-                                      }, icon: Icon(Icons.add_circle_outline,
-                                        color: modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                            size: 30,
-                                      ),),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.add_circle_outline,
+                                          color:
+                                              modeController.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                          size: 30,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -342,7 +393,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 60,),
+                SizedBox(height: 60),
                 SizedBox(
                   height: 500,
                   child: Stack(
@@ -368,7 +419,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Achievements',
@@ -381,14 +433,17 @@ class ProfileScreenState extends State<ProfileScreen> {
                                                   : Colors.black,
                                         ),
                                       ),
-                                      IconButton(onPressed: (){
-        
-                                      }, icon: Icon(Icons.add_circle_outline,
-                                        color: modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                            size: 30,
-                                      ),),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.add_circle_outline,
+                                          color:
+                                              modeController.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                          size: 30,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -401,7 +456,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 60,)
+                SizedBox(height: 60),
               ],
             ),
           ),
