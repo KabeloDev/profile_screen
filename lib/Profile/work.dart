@@ -3,31 +3,36 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Mode/mode.dart';
 import 'package:provider/provider.dart';
 
-class PostsCarousel extends StatefulWidget {
-  const PostsCarousel({super.key});
+class WorkCarousel extends StatefulWidget {
+  const WorkCarousel({super.key});
 
   @override
-  State<PostsCarousel> createState() => _PostsCarouselState();
+  State<WorkCarousel> createState() => _WorkCarouselState();
 }
 
-class _PostsCarouselState extends State<PostsCarousel> {
-  final List<Map<String, String>> posts = [
+class _WorkCarouselState extends State<WorkCarousel> {
+  final List<Map<String, String>> work = [
   {
-    'title': 'Walking my dog',
-    'content': 'Enjoying the fresh air and some quality time with my furry buddy this morning.',
-    'image': 'assets/post1.jpg',
+    'title': 'Software Development Intern',
+    'content': 'Built features using ASP.NET Core & Flutter.',
+    'image': 'assets/work.jpg',
+    'date': 'Jan 2024 – Mar 2024',
   },
   {
-    'title': 'At the park with my son',
-    'content': 'Nothing beats watching him laugh and run around. Grateful for these little moments.',
-    'image': 'assets/post2.jpg',
+    'title': 'Freelance Web Developer',
+    'content': 'Created websites for small businesses.',
+    'image': 'assets/work.jpg',
+    'date': 'Jul 2023 – Dec 2023',
   },
   {
-    'title': 'Soccer day',
-    'content': 'Great match today with the squad. Legs are tired, but the spirit is high!',
-    'image': 'assets/post3.jpg',
+    'title': 'IT Support Assistant',
+    'content': 'Handled technical issues & user support.',
+    'image': 'assets/work.jpg',
+    'date': 'Jan 2023 – Jun 2023',
   },
 ];
+
+
 
 
   @override
@@ -36,12 +41,12 @@ class _PostsCarouselState extends State<PostsCarousel> {
 
     return CarouselSlider(
         options: CarouselOptions(
-          height: 350.0,
+          height: 400.0,
           enlargeCenterPage: true,
           enableInfiniteScroll: true,
         ),
         items:
-            posts.map((post) {
+            work.map((work) {
               return Builder(
                 builder: (BuildContext context) {
                   return Card(
@@ -57,7 +62,7 @@ class _PostsCarouselState extends State<PostsCarousel> {
                             top: Radius.circular(15.0),
                           ),
                           child: Image.asset(
-                            post['image']!,
+                            work['image']!,
                             height: 150,
                             fit: BoxFit.cover,
                           ),
@@ -71,7 +76,7 @@ class _PostsCarouselState extends State<PostsCarousel> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                post['title']!,
+                                work['title']!,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -79,7 +84,12 @@ class _PostsCarouselState extends State<PostsCarousel> {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                post['content']!,
+                                work['content']!,
+                                style: TextStyle(fontSize: 14),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                work['date']!,
                                 style: TextStyle(fontSize: 14),
                               ),
                               SizedBox(height: 5),

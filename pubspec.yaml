@@ -75,6 +75,8 @@ flutter:
       - assets/post1.jpg
       - assets/post2.jpg
       - assets/post3.jpg
+      - assets/work.jpg
+      - assets/achievement.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

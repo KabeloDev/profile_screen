@@ -3,31 +3,35 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Mode/mode.dart';
 import 'package:provider/provider.dart';
 
-class PostsCarousel extends StatefulWidget {
-  const PostsCarousel({super.key});
+class AchievementCarousel extends StatefulWidget {
+  const AchievementCarousel({super.key});
 
   @override
-  State<PostsCarousel> createState() => _PostsCarouselState();
+  State<AchievementCarousel> createState() => _AchievementCarouselState();
 }
 
-class _PostsCarouselState extends State<PostsCarousel> {
-  final List<Map<String, String>> posts = [
+class _AchievementCarouselState extends State<AchievementCarousel> {
+  final List<Map<String, String>> achievements = [
   {
-    'title': 'Walking my dog',
-    'content': 'Enjoying the fresh air and some quality time with my furry buddy this morning.',
-    'image': 'assets/post1.jpg',
+    'title': 'Matriculated with Distinction',
+    'content': 'Top 10 academic performer in final year.',
+    'image': 'assets/achievement.jpg',
+    'date': 'Dec 2019',
   },
   {
-    'title': 'At the park with my son',
-    'content': 'Nothing beats watching him laugh and run around. Grateful for these little moments.',
-    'image': 'assets/post2.jpg',
+    'title': 'Diploma in IT Completed',
+    'content': 'Graduated with solid project work and leadership in group assignments.',
+    'image': 'assets/achievement.jpg',
+    'date': 'Nov 2023',
   },
   {
-    'title': 'Soccer day',
-    'content': 'Great match today with the squad. Legs are tired, but the spirit is high!',
-    'image': 'assets/post3.jpg',
+    'title': 'Internship Project Deployed',
+    'content': 'Contributed to a live feature during my dev internship.',
+    'image': 'assets/achievement.jpg',
+    'date': 'Mar 2024',
   },
 ];
+
 
 
   @override
@@ -36,12 +40,12 @@ class _PostsCarouselState extends State<PostsCarousel> {
 
     return CarouselSlider(
         options: CarouselOptions(
-          height: 350.0,
+          height: 400.0,
           enlargeCenterPage: true,
           enableInfiniteScroll: true,
         ),
         items:
-            posts.map((post) {
+            achievements.map((achievement) {
               return Builder(
                 builder: (BuildContext context) {
                   return Card(
@@ -57,7 +61,7 @@ class _PostsCarouselState extends State<PostsCarousel> {
                             top: Radius.circular(15.0),
                           ),
                           child: Image.asset(
-                            post['image']!,
+                            achievement['image']!,
                             height: 150,
                             fit: BoxFit.cover,
                           ),
@@ -71,7 +75,7 @@ class _PostsCarouselState extends State<PostsCarousel> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                post['title']!,
+                                achievement['title']!,
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -79,7 +83,12 @@ class _PostsCarouselState extends State<PostsCarousel> {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                post['content']!,
+                                achievement['content']!,
+                                style: TextStyle(fontSize: 14),
+                              ),
+                               SizedBox(height: 5),
+                              Text(
+                                achievement['date']!,
                                 style: TextStyle(fontSize: 14),
                               ),
                               SizedBox(height: 5),

@@ -56,7 +56,7 @@ class SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.flash_on,
+                Icons.work,
                 color: Colors.white,
                 size: 100.0,
               ),

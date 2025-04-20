@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:profile_screen/Profile/achievements.dart';
 import 'package:profile_screen/Profile/posts.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
+import 'package:profile_screen/Profile/work.dart';
 import 'package:provider/provider.dart';
 import '../Mode/mode.dart';
 
@@ -108,6 +110,17 @@ class ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(onPressed: (){}, icon: Icon(Icons.analytics_outlined, size: 40,)),
+            SizedBox(width: 30,),
+            IconButton(onPressed: (){}, icon: Icon(Icons.notifications_active, size: 40,)),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: modeController.isDarkMode ? Colors.black : Colors.white,
@@ -211,12 +224,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                         );
                       }).toList(),
                 ),
+                SizedBox(height: 16), 
                 SizedBox(
-                  height: 450,
+                  height: 500,
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(20, 50),
+                        offset: Offset(10, 30),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
@@ -269,61 +283,125 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 100,),
-                CarouselSlider(
-                  options: CarouselOptions(
-                    height: 100,
-                    autoPlay: true,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: true,
-                  ),
-                  items:
-                      interestIcons.entries.map((entry) {
-                        final interest = entry.key;
-                        final icon = entry.value;
+                SizedBox(height: 60),
+                SizedBox(
+                  height: 500,
+                  child: Stack(
+                    children: [
+                      Transform.translate(
+                        offset: Offset(0, 25),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                modeController.isDarkMode
+                                    ? Colors.grey[800]!.withAlpha(100)
+                                    : Colors.grey[200],
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(40),
+                              bottomRight: Radius.circular(40),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Work experience',
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              modeController.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                      IconButton(onPressed: (){
         
-                        return Builder(
-                          builder: (context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width * 0.8,
-                              margin: EdgeInsets.symmetric(horizontal: 8.0),
-                              decoration: BoxDecoration(
-                                color:
-                                    modeController.isDarkMode
-                                        ? Colors.grey[800]!.withAlpha(100)
-                                        : Colors.grey[200],
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    icon,
-                                    size: 40,
-                                    color:
-                                        modeController.isDarkMode
+                                      }, icon: Icon(Icons.add_circle_outline,
+                                        color: modeController.isDarkMode
                                             ? Colors.white
                                             : Colors.black,
+                                            size: 30,
+                                      ),),
+                                    ],
                                   ),
-                                  SizedBox(width: 16),
-                                  Text(
-                                    interest,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color:
-                                          modeController.isDarkMode
-                                              ? Colors.white
-                                              : Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+                                ),
+                                WorkCarousel(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                SizedBox(height: 60,),
+                SizedBox(
+                  height: 500,
+                  child: Stack(
+                    children: [
+                      Transform.translate(
+                        offset: Offset(10, 30),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                modeController.isDarkMode
+                                    ? Colors.grey[800]!.withAlpha(100)
+                                    : Colors.grey[200],
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              bottomLeft: Radius.circular(40),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Achievements',
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              modeController.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                      IconButton(onPressed: (){
+        
+                                      }, icon: Icon(Icons.add_circle_outline,
+                                        color: modeController.isDarkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                            size: 30,
+                                      ),),
+                                    ],
+                                  ),
+                                ),
+                                AchievementCarousel(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 60,)
               ],
             ),
           ),
