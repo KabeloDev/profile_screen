@@ -108,152 +108,224 @@ class ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      body: Container(
-        color: modeController.isDarkMode ? Colors.black : Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 50,
-                backgroundImage:
-                    profilePicture.startsWith('assets/')
-                        ? AssetImage(profilePicture) as ImageProvider
-                        : FileImage(File(profilePicture)),
-              ),
-              SizedBox(height: 16),
-              Text(
-                '$firstName $lastName',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      modeController.isDarkMode ? Colors.white : Colors.black,
+      body: SingleChildScrollView(
+        child: Container(
+          color: modeController.isDarkMode ? Colors.black : Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage:
+                      profilePicture.startsWith('assets/')
+                          ? AssetImage(profilePicture) as ImageProvider
+                          : FileImage(File(profilePicture)),
                 ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                bio,
-                style: TextStyle(
-                  fontSize: 16,
-                  color:
-                      modeController.isDarkMode
-                          ? Colors.white70
-                          : Colors.black87,
+                SizedBox(height: 16),
+                Text(
+                  '$firstName $lastName',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color:
+                        modeController.isDarkMode ? Colors.white : Colors.black,
+                  ),
                 ),
-              ),
-              SizedBox(height: 16),
-              const Divider(color: Colors.grey, thickness: 1),
-              SizedBox(height: 16),
-              Text(
-                'Interests',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      modeController.isDarkMode ? Colors.white : Colors.black,
+                SizedBox(height: 8),
+                Text(
+                  bio,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color:
+                        modeController.isDarkMode
+                            ? Colors.white70
+                            : Colors.black87,
+                  ),
                 ),
-              ),
-              SizedBox(height: 16),
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 100,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  enableInfiniteScroll: true,
+                SizedBox(height: 16),
+                const Divider(color: Colors.grey, thickness: 1),
+                SizedBox(height: 16),
+                Text(
+                  'Interests',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color:
+                        modeController.isDarkMode ? Colors.white : Colors.black,
+                  ),
                 ),
-                items:
-                    interestIcons.entries.map((entry) {
-                      final interest = entry.key;
-                      final icon = entry.value;
-
-                      return Builder(
-                        builder: (context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            margin: EdgeInsets.symmetric(horizontal: 8.0),
-                            decoration: BoxDecoration(
-                              color:
-                                  modeController.isDarkMode
-                                      ? Colors.grey[800]!.withAlpha(100)
-                                      : Colors.grey[200],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  icon,
-                                  size: 40,
-                                  color:
-                                      modeController.isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                ),
-                                SizedBox(width: 16),
-                                Text(
-                                  interest,
-                                  style: TextStyle(
-                                    fontSize: 20,
+                SizedBox(height: 16),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 100,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                  ),
+                  items:
+                      interestIcons.entries.map((entry) {
+                        final interest = entry.key;
+                        final icon = entry.value;
+        
+                        return Builder(
+                          builder: (context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              margin: EdgeInsets.symmetric(horizontal: 8.0),
+                              decoration: BoxDecoration(
+                                color:
+                                    modeController.isDarkMode
+                                        ? Colors.grey[800]!.withAlpha(100)
+                                        : Colors.grey[200],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    icon,
+                                    size: 40,
                                     color:
                                         modeController.isDarkMode
                                             ? Colors.white
                                             : Colors.black,
-                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  SizedBox(width: 16),
+                                  Text(
+                                    interest,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color:
+                                          modeController.isDarkMode
+                                              ? Colors.white
+                                              : Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                ),
+                SizedBox(
+                  height: 450,
+                  child: Stack(
+                    children: [
+                      Transform.translate(
+                        offset: Offset(20, 50),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                modeController.isDarkMode
+                                    ? Colors.grey[800]!.withAlpha(100)
+                                    : Colors.grey[200],
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              bottomLeft: Radius.circular(40),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Posts',
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              modeController.isDarkMode
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                      IconButton(onPressed: (){
+        
+                                      }, icon: Icon(Icons.add_circle_outline,
+                                        color: modeController.isDarkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                            size: 30,
+                                      ),),
+                                    ],
                                   ),
                                 ),
+                                PostsCarousel(),
                               ],
                             ),
-                          );
-                        },
-                      );
-                    }).toList(),
-              ),
-              Expanded(
-                child: Stack(
-                  children: [
-                    Transform.translate(
-                      offset: Offset(20, 50),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color:
-                              modeController.isDarkMode
-                                  ? Colors.grey[800]!.withAlpha(100)
-                                  : Colors.grey[200],
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.all(8),
-                                child: Text(
-                                  'Posts',
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color:
-                                        modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                  ),
-                                ),
-                              ),
-                              PostsCarousel()
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(height: 100,),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 100,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                  ),
+                  items:
+                      interestIcons.entries.map((entry) {
+                        final interest = entry.key;
+                        final icon = entry.value;
+        
+                        return Builder(
+                          builder: (context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              margin: EdgeInsets.symmetric(horizontal: 8.0),
+                              decoration: BoxDecoration(
+                                color:
+                                    modeController.isDarkMode
+                                        ? Colors.grey[800]!.withAlpha(100)
+                                        : Colors.grey[200],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    icon,
+                                    size: 40,
+                                    color:
+                                        modeController.isDarkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                  ),
+                                  SizedBox(width: 16),
+                                  Text(
+                                    interest,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color:
+                                          modeController.isDarkMode
+                                              ? Colors.white
+                                              : Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

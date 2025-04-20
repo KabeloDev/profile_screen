@@ -10,31 +10,31 @@ class PostsCarousel extends StatefulWidget {
 
 class _PostsCarouselState extends State<PostsCarousel> {
   final List<Map<String, String>> posts = [
-    {
-      'title': 'Post 1',
-      'content': 'This is the content of post 1.',
-      'image': 'assets/default-profile.jpg',
-    },
-    {
-      'title': 'Post 2',
-      'content': 'This is the content of post 2.',
-      'image': 'assets/default-profile.jpg',
-    },
-    {
-      'title': 'Post 3',
-      'content': 'This is the content of post 3.',
-      'image': 'assets/default-profile.jpg',
-    },
-  ];
+  {
+    'title': 'Walking my dog',
+    'content': 'Enjoying the fresh air and some quality time with my furry buddy this morning.',
+    'image': 'assets/post1.jpg',
+  },
+  {
+    'title': 'At the park with my son',
+    'content': 'Nothing beats watching him laugh and run around. Grateful for these little moments.',
+    'image': 'assets/post2.jpg',
+  },
+  {
+    'title': 'Soccer day',
+    'content': 'Great match today with the squad. Legs are tired, but the spirit is high!',
+    'image': 'assets/post3.jpg',
+  },
+];
+
 
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
 
-    return Center(
-      child: CarouselSlider(
+    return CarouselSlider(
         options: CarouselOptions(
-          height: 350.0,
+          height: 330.0,
           enlargeCenterPage: true,
           enableInfiniteScroll: true,
         ),
@@ -61,7 +61,10 @@ class _PostsCarouselState extends State<PostsCarousel> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.only(
+                            left: 5,
+                            right: 5,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -107,6 +110,15 @@ class _PostsCarouselState extends State<PostsCarousel> {
                                             ? Colors.white
                                             : Colors.black,
                                   ),
+                                  SizedBox(width: 20),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.delete),
+                                    color:
+                                        modeController.isDarkMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                  ),
                                 ],
                               ),
                             ],
@@ -118,7 +130,5 @@ class _PostsCarouselState extends State<PostsCarousel> {
                 },
               );
             }).toList(),
-      ),
-    );
-  }
+      );  }
 }
