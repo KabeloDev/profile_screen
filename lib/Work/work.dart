@@ -98,25 +98,7 @@ class _WorkCarouselState extends State<WorkCarousel> {
                                   IconButton(
                                     onPressed: () {
                                     },
-                                    icon: Icon(Icons.thumb_up),
-                                    color:
-                                        modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                  ),
-                                  SizedBox(width: 20),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.comment),
-                                    color:
-                                        modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                  ),
-                                  SizedBox(width: 20),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.share),
+                                    icon: Icon(Icons.edit),
                                     color:
                                         modeController.isDarkMode
                                             ? Colors.white

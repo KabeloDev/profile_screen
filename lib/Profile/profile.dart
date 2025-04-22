@@ -7,7 +7,7 @@ import 'package:profile_screen/Posts/add_post.dart';
 import 'package:profile_screen/Posts/post_list.dart';
 import 'package:profile_screen/Posts/posts.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
-import 'package:profile_screen/Profile/work.dart';
+import 'package:profile_screen/Work/work.dart';
 import 'package:profile_screen/Stats/stats.dart';
 import 'package:provider/provider.dart';
 import '../Mode/mode.dart';
@@ -44,12 +44,11 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   List<Map<String, dynamic>> posts = PostList().posts;
 
-void addNewPost(Map<String, dynamic> newPost) {
-  setState(() {
-    posts.add(newPost);
-  });
-}
-
+  void addNewPost(Map<String, dynamic> newPost) {
+    setState(() {
+      posts.add(newPost);
+    });
+  }
 
   void updateProfile(
     String updatedFirstName,
@@ -144,7 +143,24 @@ void addNewPost(Map<String, dynamic> newPost) {
                   MaterialPageRoute(builder: (context) => MessagesScreen()),
                 );
               },
-              icon: Icon(Icons.notifications_active, size: 40),
+              icon: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Icon(Icons.notifications_active, size: 40),
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: CircleAvatar(
+                      radius: 10,
+                      backgroundColor: Colors.red,
+                      child: Text(
+                        '5', // Notification count
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -284,7 +300,7 @@ void addNewPost(Map<String, dynamic> newPost) {
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(10, 30),
+                        offset: Offset(30, 30),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
@@ -322,10 +338,10 @@ void addNewPost(Map<String, dynamic> newPost) {
                                         onPressed: () {
                                           setState(() {
                                             showDialog(
-                                            context: context,
-                                            builder:
-                                                (context) => AddPostDialog(),
-                                          );
+                                              context: context,
+                                              builder:
+                                                  (context) => AddPostDialog(),
+                                            );
                                           });
                                         },
                                         icon: Icon(
@@ -355,7 +371,7 @@ void addNewPost(Map<String, dynamic> newPost) {
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(0, 25),
+                        offset: Offset(-30, 25),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
@@ -418,7 +434,7 @@ void addNewPost(Map<String, dynamic> newPost) {
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(10, 30),
+                        offset: Offset(30, 30),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
