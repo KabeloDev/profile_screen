@@ -15,9 +15,12 @@ class _AddPostDialogState extends State<AddPostDialog> {
   String? selectedImage;
 
   final List<String> predefinedImages = [
-    'assets/post1.jpg',
-    'assets/post2.jpg',
-    'assets/post3.jpg',
+    'assets/post4.jpeg',
+    'assets/post5.jpg',
+    'assets/post6.jpg',
+    'assets/post7.jpg',
+    'assets/post8.jpeg',
+    'assets/post9.jpg',
   ];
 
   @override

@@ -64,6 +64,12 @@ class _PostsCarouselState extends State<PostsCarousel> {
                   }
                   commentController.clear();
                   Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Comment sent successfully!'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
                 }
               },
               child: const Text('Send'),
