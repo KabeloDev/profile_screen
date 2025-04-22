@@ -134,7 +134,7 @@ class _PostsCarouselState extends State<PostsCarousel> {
 
     return CarouselSlider(
       options: CarouselOptions(
-        height: 350.0,
+        height: 400.0,
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
       ),

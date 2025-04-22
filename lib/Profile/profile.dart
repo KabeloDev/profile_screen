@@ -300,7 +300,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(30, 30),
+                        offset: Offset(40, 20),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
@@ -371,7 +371,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(-30, 25),
+                        offset: Offset(-40, 20),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
@@ -389,7 +389,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.all(8),
+                                  padding: EdgeInsets.only(left: 15, right: 8, top: 8, bottom: 8),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -434,7 +434,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   child: Stack(
                     children: [
                       Transform.translate(
-                        offset: Offset(30, 30),
+                        offset: Offset(40, 20),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
