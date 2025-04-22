@@ -35,6 +35,7 @@ class _PostsCarouselState extends State<PostsCarousel> {
                     },
                   ),
                 ),
+                const Divider(),
                 const SizedBox(height: 10),
                 TextField(
                   controller: commentController,
