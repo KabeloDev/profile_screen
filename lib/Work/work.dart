@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Mode/mode.dart';
+import 'package:profile_screen/Work/work_list.dart';
 import 'package:provider/provider.dart';
 
 class WorkCarousel extends StatefulWidget {
@@ -11,118 +12,189 @@ class WorkCarousel extends StatefulWidget {
 }
 
 class _WorkCarouselState extends State<WorkCarousel> {
-  final List<Map<String, String>> work = [
-  {
-    'title': 'Software Development Intern',
-    'content': 'Built features using ASP.NET Core & Flutter.',
-    'image': 'assets/work.jpg',
-    'date': 'Jan 2024 – Mar 2024',
-  },
-  {
-    'title': 'Freelance Web Developer',
-    'content': 'Created websites for small businesses.',
-    'image': 'assets/work.jpg',
-    'date': 'Jul 2023 – Dec 2023',
-  },
-  {
-    'title': 'IT Support Assistant',
-    'content': 'Handled technical issues & user support.',
-    'image': 'assets/work.jpg',
-    'date': 'Jan 2023 – Jun 2023',
-  },
-];
+  void showEditWorkDialog(Map<String, dynamic> work) {
+    final TextEditingController titleController = TextEditingController(
+      text: work['title'],
+    );
+    final TextEditingController contentController = TextEditingController(
+      text: work['content'],
+    );
+    final TextEditingController dateController = TextEditingController(
+      text: work['date'],
+    );
 
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit Work Experience'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: titleController,
+                  decoration: const InputDecoration(
+                    labelText: 'Title',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: contentController,
+                  decoration: const InputDecoration(
+                    labelText: 'Content',
+                    border: OutlineInputBorder(),
+                  ),
+                  maxLines: 3,
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: dateController,
+                  decoration: const InputDecoration(
+                    labelText: 'Date',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  work['title'] = titleController.text;
+                  work['content'] = contentController.text;
+                  work['date'] = dateController.text;
+                });
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Work experience updated successfully!'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
-
+  void deleteWorkExperience(Map<String, dynamic> work) {
+    setState(() {
+      final workList = Provider.of<WorkList>(context, listen: false);
+      workList.work.remove(work);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Worl experience deleted successfully!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
+    final workList = Provider.of<WorkList>(
+      context,
+    ); // Access the WorkList from the provider
+    final work = workList.work;
 
     return CarouselSlider(
-        options: CarouselOptions(
-          height: 400.0,
-          enlargeCenterPage: true,
-          enableInfiniteScroll: true,
-        ),
-        items:
-            work.map((work) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    elevation: 5,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(15.0),
-                          ),
-                          child: Image.asset(
-                            work['image']!,
-                            height: 150,
-                            fit: BoxFit.cover,
-                          ),
+      options: CarouselOptions(
+        height: 400.0,
+        enlargeCenterPage: true,
+        enableInfiniteScroll: true,
+      ),
+      items:
+          work.map((work) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  elevation: 5,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(15.0),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 5,
-                            right: 5,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                work['title']!,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                        child: Image.asset(
+                          'assets/work.jpg', // Replace with the actual image path
+                          height: 150,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5, right: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              work['title']!,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              work['content']!,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              work['date']!,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(height: 5),
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    showEditWorkDialog(work);
+                                  },
+                                  icon: const Icon(Icons.edit),
+                                  color:
+                                      modeController.isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
                                 ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                work['content']!,
-                                style: TextStyle(fontSize: 14),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                work['date']!,
-                                style: TextStyle(fontSize: 14),
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                    },
-                                    icon: Icon(Icons.edit),
-                                    color:
-                                        modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                  ),
-                                  SizedBox(width: 20),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.delete),
-                                    color:
-                                        modeController.isDarkMode
-                                            ? Colors.white
-                                            : Colors.black,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                const SizedBox(width: 20),
+                                IconButton(
+                                  onPressed: () {
+                                    deleteWorkExperience(work);
+                                  },
+                                  icon: const Icon(Icons.delete),
+                                  color:
+                                      modeController.isDarkMode
+                                          ? Colors.white
+                                          : Colors.black,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-      );  }
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          }).toList(),
+    );
+  }
 }

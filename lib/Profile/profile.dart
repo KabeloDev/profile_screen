@@ -7,6 +7,7 @@ import 'package:profile_screen/Posts/add_post.dart';
 import 'package:profile_screen/Posts/post_list.dart';
 import 'package:profile_screen/Posts/posts.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
+import 'package:profile_screen/Work/add_work.dart';
 import 'package:profile_screen/Work/work.dart';
 import 'package:profile_screen/Stats/stats.dart';
 import 'package:provider/provider.dart';
@@ -389,7 +390,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(left: 25, top: 8, bottom: 8),
+                                  padding: EdgeInsets.only(
+                                    left: 25,
+                                    top: 8,
+                                    bottom: 8,
+                                  ),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -406,7 +411,14 @@ class ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                       ),
                                       IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          showDialog(
+                                            context: context,
+                                            builder:
+                                                (context) =>
+                                                    const AddWorkDialog(),
+                                          );
+                                        },
                                         icon: Icon(
                                           Icons.add_circle_outline,
                                           color:
