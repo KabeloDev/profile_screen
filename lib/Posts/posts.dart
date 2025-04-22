@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Mode/mode.dart';
+import 'package:profile_screen/Posts/post_list.dart';
 import 'package:provider/provider.dart';
 
 class PostsCarousel extends StatefulWidget {
@@ -11,32 +12,7 @@ class PostsCarousel extends StatefulWidget {
 }
 
 class _PostsCarouselState extends State<PostsCarousel> {
-  final List<Map<String, dynamic>> posts = [
-    {
-      'title': 'Walking my dog',
-      'content': 'Enjoying the fresh air and some quality time with my furry buddy this morning.',
-      'image': 'assets/post1.jpg',
-      'likes': 25,
-      'comments': 5,
-      'commentList': ['Nice!', 'Looks fun!', 'Great picture!'],
-    },
-    {
-      'title': 'At the park with my son',
-      'content': 'Nothing beats watching him laugh and run around. Grateful for these little moments.',
-      'image': 'assets/post2.jpg',
-      'likes': 40,
-      'comments': 8,
-      'commentList': ['So cute!', 'Adorable!', 'Cherish these moments.'],
-    },
-    {
-      'title': 'Soccer day',
-      'content': 'Great match today with the squad. Legs are tired, but the spirit is high!',
-      'image': 'assets/post3.jpg',
-      'likes': 60,
-      'comments': 12,
-      'commentList': ['Well played!', 'Awesome!', 'Keep it up!'],
-    },
-  ];
+ 
 
   void showCommentsDialog(Map<String, dynamic> post) {
     final TextEditingController commentController = TextEditingController();
@@ -144,9 +120,13 @@ class _PostsCarouselState extends State<PostsCarousel> {
     );
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
+    final postList = Provider.of<PostList>(context);  // Access the PostList from the provider
+    final posts = postList.posts;
 
     return CarouselSlider(
       options: CarouselOptions(

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Messages/messages.dart';
 import 'package:profile_screen/Achievements/achievements.dart';
+import 'package:profile_screen/Posts/add_post.dart';
+import 'package:profile_screen/Posts/post_list.dart';
 import 'package:profile_screen/Posts/posts.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
 import 'package:profile_screen/Profile/work.dart';
@@ -39,6 +41,15 @@ class ProfileScreenState extends State<ProfileScreen> {
     'Gaming',
     'Music',
   ];
+
+  List<Map<String, dynamic>> posts = PostList().posts;
+
+void addNewPost(Map<String, dynamic> newPost) {
+  setState(() {
+    posts.add(newPost);
+  });
+}
+
 
   void updateProfile(
     String updatedFirstName,
@@ -308,7 +319,15 @@ class ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                       ),
                                       IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            showDialog(
+                                            context: context,
+                                            builder:
+                                                (context) => AddPostDialog(),
+                                          );
+                                          });
+                                        },
                                         icon: Icon(
                                           Icons.add_circle_outline,
                                           color:
