@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:profile_screen/Achievements/add_achievement.dart';
+import 'package:profile_screen/History/history.dart';
 import 'package:profile_screen/Messages/messages.dart';
 import 'package:profile_screen/Achievements/achievements.dart';
 import 'package:profile_screen/Posts/add_post.dart';
@@ -166,6 +167,16 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
+            ),
+            SizedBox(width: 20,),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => History()),
+                );
+              },
+              icon: Icon(Icons.history, size: 40),
             ),
           ],
         ),
