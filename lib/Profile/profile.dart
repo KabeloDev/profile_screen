@@ -7,6 +7,7 @@ import 'package:profile_screen/Achievements/achievements.dart';
 import 'package:profile_screen/Posts/add_post.dart';
 import 'package:profile_screen/Posts/post_list.dart';
 import 'package:profile_screen/Posts/posts.dart';
+import 'package:profile_screen/Profile/chips.dart';
 import 'package:profile_screen/Profile/fun_facts.dart';
 import 'package:profile_screen/Profile/progress_bar.dart';
 import 'package:profile_screen/Profile/update_profile.dart';
@@ -523,19 +524,12 @@ class ProfileScreenState extends State<ProfileScreen> {
                         modeController.isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-                SizedBox(height: 20,),
-                Wrap(
-                  spacing: 8,
-                  children: const [
-                    Chip(label: Text('Flutter')),
-                    Chip(label: Text('.NET Core')),
-                    Chip(label: Text('Azure')),
-                    Chip(label: Text('Firebase')),
-                  ],
-                ),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
+                SkillsChips(),
+
+                SizedBox(height: 20),
                 FunFactsSection(),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
                 Text(
                   'GOAL:',
                   style: TextStyle(
@@ -545,7 +539,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         modeController.isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-                 Text(
+                Text(
                   'BItcube mobile developer internship',
                   style: TextStyle(
                     fontSize: 20,
@@ -554,8 +548,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                         modeController.isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
-                SizedBox(height: 20,),
-                ProgressBar(initialProgress: 0.3)
+                SizedBox(height: 20),
+                ProgressBar(initialProgress: 0.3),
               ],
             ),
           ),
