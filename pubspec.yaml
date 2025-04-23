@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.4
   visibility_detector: ^0.4.0+2
   syncfusion_flutter_gauges: ^29.1.39
+  chart_sparkline: ^1.1.1
 
 dev_dependencies:
   flutter_test:
