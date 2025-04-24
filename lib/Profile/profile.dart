@@ -5,6 +5,7 @@ import 'package:profile_screen/Achievements/add_achievement.dart';
 import 'package:profile_screen/History/history.dart';
 import 'package:profile_screen/Messages/messages.dart';
 import 'package:profile_screen/Achievements/achievements.dart';
+import 'package:profile_screen/Notifications/notifications.dart';
 import 'package:profile_screen/Posts/add_post.dart';
 import 'package:profile_screen/Posts/post_list.dart';
 import 'package:profile_screen/Posts/posts.dart';
@@ -152,6 +153,33 @@ class ProfileScreenState extends State<ProfileScreen> {
               icon: Stack(
                 clipBehavior: Clip.none,
                 children: [
+                  Icon(Icons.message, size: 40),
+                  Positioned(
+                    right: -5,
+                    top: 0,
+                    child: CircleAvatar(
+                      radius: 10,
+                      backgroundColor: Colors.red,
+                      child: Text(
+                        '5', // Notification count
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 30),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Notifications()),
+                );
+              },
+              icon: Stack(
+                clipBehavior: Clip.none,
+                children: [
                   Icon(Icons.notifications_active, size: 40),
                   Positioned(
                     right: 0,
@@ -160,7 +188,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       radius: 10,
                       backgroundColor: Colors.red,
                       child: Text(
-                        '5', // Notification count
+                        '12', // Notification count
                         style: TextStyle(fontSize: 12, color: Colors.white),
                       ),
                     ),
