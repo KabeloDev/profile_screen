@@ -7,7 +7,7 @@ class EngagementChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.grey[90],
+      color: Colors.grey[90], 
       surfaceTintColor: Colors.grey[200],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
@@ -15,12 +15,13 @@ class EngagementChart extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Chart on the left
+            // Radial gauge chart on the left
             SizedBox(
               height: 220,
               width: 220,
               child: SfRadialGauge(
                 axes: [
+                  // Background track for the chart
                   RadialAxis(
                     minimum: 0,
                     maximum: 100,
@@ -34,12 +35,13 @@ class EngagementChart extends StatelessWidget {
                     ),
                     pointers: const [
                       RangePointer(
-                        value: 100, // full background track
+                        value: 100, 
                         width: 30,
                         color: Colors.transparent,
                       ),
                     ],
                     annotations: [
+                      // Icon annotation in the center of the chart
                       GaugeAnnotation(
                         widget: Icon(
                           Icons.mobile_friendly,
@@ -49,6 +51,7 @@ class EngagementChart extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // Segment for "Shares"
                   RadialAxis(
                     minimum: 0,
                     maximum: 100,
@@ -69,6 +72,7 @@ class EngagementChart extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // Segment for "Comments"
                   RadialAxis(
                     minimum: 0,
                     maximum: 100,
@@ -89,6 +93,7 @@ class EngagementChart extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // Segment for "Likes"
                   RadialAxis(
                     minimum: 0,
                     maximum: 100,
@@ -112,45 +117,46 @@ class EngagementChart extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 20), // Space between chart and text
-            // Text on the right
+            const SizedBox(width: 20), 
+            // Text description on the right
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Title for the engagement chart
                   Text(
                     'Post Engagement',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
+                  // Breakdown of engagement metrics
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Likes metric
                       Row(
                         children: [
                           Container(width: 12, height: 12, color: Colors.orange),
-                          SizedBox(width: 8),
-                          Text('Likes: 75%'),
+                          const SizedBox(width: 8),
+                          const Text('Likes: 75%'),
                         ],
                       ),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
+                      // Comments metric
                       Row(
                         children: [
                           Container(width: 12, height: 12, color: Colors.green),
-                          SizedBox(width: 8),
-                          Text('Comments: 20%'),
+                          const SizedBox(width: 8),
+                          const Text('Comments: 20%'),
                         ],
                       ),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
+                      // Shares metric
                       Row(
                         children: [
-                          Container(
-                            width: 12,
-                            height: 12,
-                            color: Colors.blue,
-                          ),
-                          SizedBox(width: 8),
-                          Text('Shares: 5%'),
+                          Container(width: 12, height: 12, color: Colors.blue),
+                          const SizedBox(width: 8),
+                          const Text('Shares: 5%'),
                         ],
                       ),
                     ],

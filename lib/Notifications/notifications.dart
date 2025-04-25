@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Notifications extends StatelessWidget {
   Notifications({super.key});
 
+  // List of notifications with details like title, description, timestamp, and icon
   final List<Map<String, dynamic>> notifications = [
     {
       'icon': Icons.notifications_active,
@@ -78,12 +79,13 @@ class Notifications extends StatelessWidget {
     },
   ];
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Notifications'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Notifications'),
+        centerTitle: true, 
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16.0),
@@ -98,9 +100,10 @@ class Notifications extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
+              // List of notifications displayed as cards
               ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true, // Prevents the list from expanding infinitely
+                physics: const NeverScrollableScrollPhysics(), // Disables scrolling within the list
                 itemCount: notifications.length,
                 itemBuilder: (context, index) {
                   final notification = notifications[index];
@@ -113,7 +116,7 @@ class Notifications extends StatelessWidget {
                         size: 30,
                       ),
                       title: Text(
-                        notification['title'],
+                        notification['title'], 
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -121,8 +124,10 @@ class Notifications extends StatelessWidget {
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Notification description
                           Text(notification['description']),
                           const SizedBox(height: 4),
+                          // Timestamp for the notification
                           Text(
                             notification['timestamp'],
                             style: const TextStyle(

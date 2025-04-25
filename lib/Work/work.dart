@@ -12,16 +12,11 @@ class WorkCarousel extends StatefulWidget {
 }
 
 class _WorkCarouselState extends State<WorkCarousel> {
+  // Opens a dialog to edit the selected work experience
   void showEditWorkDialog(Map<String, dynamic> work) {
-    final TextEditingController titleController = TextEditingController(
-      text: work['title'],
-    );
-    final TextEditingController contentController = TextEditingController(
-      text: work['content'],
-    );
-    final TextEditingController dateController = TextEditingController(
-      text: work['date'],
-    );
+    final TextEditingController titleController = TextEditingController(text: work['title']);
+    final TextEditingController contentController = TextEditingController(text: work['content']);
+    final TextEditingController dateController = TextEditingController(text: work['date']);
 
     showDialog(
       context: context,
@@ -62,18 +57,19 @@ class _WorkCarouselState extends State<WorkCarousel> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the dialog without saving
               },
               child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 setState(() {
+                  // Update the work experience with new values
                   work['title'] = titleController.text;
                   work['content'] = contentController.text;
                   work['date'] = dateController.text;
                 });
-                Navigator.pop(context);
+                Navigator.pop(context); // Close the dialog
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Work experience updated successfully!'),
@@ -89,13 +85,14 @@ class _WorkCarouselState extends State<WorkCarousel> {
     );
   }
 
+  // Deletes the selected work experience and shows a confirmation message
   void deleteWorkExperience(Map<String, dynamic> work) {
     setState(() {
       final workList = Provider.of<WorkList>(context, listen: false);
-      workList.work.remove(work);
+      workList.work.remove(work); // Remove the work experience from the list
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Worl experience deleted successfully!'),
+          content: Text('Work experience deleted successfully!'),
           duration: Duration(seconds: 2),
         ),
       );
@@ -105,9 +102,7 @@ class _WorkCarouselState extends State<WorkCarousel> {
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
-    final workList = Provider.of<WorkList>(
-      context,
-    ); // Access the WorkList from the provider
+    final workList = Provider.of<WorkList>(context); // Access the WorkList from the provider
     final work = workList.work;
 
     return CarouselSlider(
@@ -116,85 +111,83 @@ class _WorkCarouselState extends State<WorkCarousel> {
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
       ),
-      items:
-          work.map((work) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+      items: work.map((work) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              elevation: 5,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Display the work image at the top of the card
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(15.0),
+                    ),
+                    child: Image.asset(
+                      'assets/work.jpg', 
+                      height: 150,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  elevation: 5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(15.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5, right: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Display the work title
+                        Text(
+                          work['title']!,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        child: Image.asset(
-                          'assets/work.jpg', // Replace with the actual image path
-                          height: 150,
-                          fit: BoxFit.cover,
+                        const SizedBox(height: 5),
+                        // Display the work content
+                        Text(
+                          work['content']!,
+                          style: const TextStyle(fontSize: 14),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        const SizedBox(height: 5),
+                        // Display the work date
+                        Text(
+                          work['date']!,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 5),
+                        // Action buttons for editing and deleting the work experience
+                        Row(
                           children: [
-                            Text(
-                              work['title']!,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            IconButton(
+                              onPressed: () {
+                                showEditWorkDialog(work); // Open the edit dialog
+                              },
+                              icon: const Icon(Icons.edit),
+                              color: modeController.isDarkMode ? Colors.white : Colors.black,
                             ),
-                            const SizedBox(height: 5),
-                            Text(
-                              work['content']!,
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              work['date']!,
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                            const SizedBox(height: 5),
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    showEditWorkDialog(work);
-                                  },
-                                  icon: const Icon(Icons.edit),
-                                  color:
-                                      modeController.isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                ),
-                                const SizedBox(width: 20),
-                                IconButton(
-                                  onPressed: () {
-                                    deleteWorkExperience(work);
-                                  },
-                                  icon: const Icon(Icons.delete),
-                                  color:
-                                      modeController.isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                ),
-                              ],
+                            const SizedBox(width: 20),
+                            IconButton(
+                              onPressed: () {
+                                deleteWorkExperience(work); // Delete the work experience
+                              },
+                              icon: const Icon(Icons.delete),
+                              color: modeController.isDarkMode ? Colors.white : Colors.black,
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                );
-              },
+                ],
+              ),
             );
-          }).toList(),
+          },
+        );
+      }).toList(),
     );
   }
 }

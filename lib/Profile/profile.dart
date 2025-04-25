@@ -1,3 +1,4 @@
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -27,6 +28,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class ProfileScreenState extends State<ProfileScreen> {
+  //User profile information default values
   String firstName = 'Kabelo';
   String lastName = 'Makhanya';
   String bio = 'I am a software developer.';
@@ -41,6 +43,7 @@ class ProfileScreenState extends State<ProfileScreen> {
     'Music': Icons.music_note,
   };
 
+// List of interests
   List<String> interests = [
     'Coding',
     'Photography',
@@ -51,12 +54,14 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   List<Map<String, dynamic>> posts = PostList().posts;
 
+// Adds a new post to the list of posts
   void addNewPost(Map<String, dynamic> newPost) {
     setState(() {
       posts.add(newPost);
     });
   }
 
+// Updates the profile information
   void updateProfile(
     String updatedFirstName,
     String updatedLastName,
@@ -98,6 +103,8 @@ class ProfileScreenState extends State<ProfileScreen> {
           onPressed: () {
             Navigator.push(
               context,
+              // Navigate to the update profile screen
+              // Pass the current profile information to the screen
               MaterialPageRoute(
                 builder:
                     (context) => UpdateProfileScreen(
@@ -118,6 +125,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         title: Text('Profile'),
         centerTitle: true,
         actions: [
+          // IconButton to toggle between light and dark mode
           IconButton(
             onPressed: () {
               modeController.toggleMode();
@@ -128,6 +136,7 @@ class ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
+      // Bottom navigation bar for the dashboard, messages, notifications, and history
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(10),
         child: Row(
@@ -217,6 +226,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // Profile picture, name, bio and profile stats
                 CircleAvatar(
                   radius: 50,
                   backgroundImage:
@@ -284,6 +294,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
+                // Carousel slider for interests
                 CarouselSlider(
                   options: CarouselOptions(
                     height: 100,
@@ -339,6 +350,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       }).toList(),
                 ),
                 SizedBox(height: 16),
+                // Posts section
                 SizedBox(
                   height: 500,
                   child: Stack(
@@ -378,6 +390,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                                   : Colors.black,
                                         ),
                                       ),
+                                      // Dialog to add a new post
                                       IconButton(
                                         onPressed: () {
                                           setState(() {
@@ -400,7 +413,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-                                PostsCarousel(),
+                                PostsCarousel(), // Carousel for posts
                               ],
                             ),
                           ),
@@ -410,6 +423,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(height: 60),
+                // Work experience section
                 SizedBox(
                   height: 500,
                   child: Stack(
@@ -453,6 +467,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                                   : Colors.black,
                                         ),
                                       ),
+                                      // Dialog to add a new work experience
                                       IconButton(
                                         onPressed: () {
                                           showDialog(
@@ -474,7 +489,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-                                WorkCarousel(),
+                                WorkCarousel(), // Carousel for work experience
                               ],
                             ),
                           ),
@@ -484,6 +499,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(height: 60),
+                // Achievements section
                 SizedBox(
                   height: 500,
                   child: Stack(
@@ -523,6 +539,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                                   : Colors.black,
                                         ),
                                       ),
+                                      // Dialog to add a new achievement
                                       IconButton(
                                         onPressed: () {
                                           showDialog(
@@ -544,7 +561,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-                                AchievementCarousel(),
+                                AchievementCarousel(), // Carousel for achievements
                               ],
                             ),
                           ),
@@ -554,6 +571,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(height: 60),
+                // Skills section
                 Text(
                   'Top skills',
                   style: TextStyle(
@@ -565,10 +583,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(height: 20),
                 SkillsChips(),
-
                 SizedBox(height: 20),
+                // Fun facts section
                 FunFactsSection(),
                 SizedBox(height: 20),
+                // Goal progress bar section
                 Text(
                   'GOAL:',
                   style: TextStyle(

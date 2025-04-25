@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProgressBar extends StatefulWidget {
-  final double initialProgress; // Initial progress value (0 to 1)
+  final double initialProgress; // Initial progress value 
   const ProgressBar({super.key, required this.initialProgress});
 
   @override
@@ -72,7 +72,6 @@ class _ProgressBarState extends State<ProgressBar> {
               ),
             ),
           const SizedBox(height: 10),
-          // Optional: Milestone Label
           Center(
             child: Text(
               progress == 1.0 ? 'Goal Achieved!' : 'In Progress...',
@@ -94,7 +93,7 @@ class _ProgressBarState extends State<ProgressBar> {
             },
             min: 0.0,
             max: 1.0,
-            divisions: 100, // Optional: Divide the slider into 100 steps
+            divisions: 100, 
             label: '${(progress * 100).toInt()}%', // Show percentage as a label
           ),
         ],

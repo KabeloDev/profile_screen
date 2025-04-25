@@ -9,8 +9,9 @@ class FunFactsSection extends StatefulWidget {
 }
 
 class _FunFactsSectionState extends State<FunFactsSection> {
-  bool _isVisible = false; // Control visibility for animation
+  bool _isVisible = false; // Controls the visibility of the section
 
+  // List of fun facts with their titles, counts, icons, and colors
   final List<Map<String, dynamic>> funStats = [
     {
       'title': 'Projects Completed',
@@ -43,14 +44,16 @@ class _FunFactsSectionState extends State<FunFactsSection> {
     return VisibilityDetector(
       key: const Key('fun-facts-section'),
       onVisibilityChanged: (info) {
+        // Trigger animation when the section becomes visible
         if (info.visibleFraction > 0.4 && !_isVisible) {
           setState(() {
-            _isVisible = true;  // Trigger animation start when visible
+            _isVisible = true;
           });
         }
+        // Reset animation when the section is scrolled out of view
         if (info.visibleFraction == 0 && _isVisible) {
           setState(() {
-            _isVisible = false;  // Reset the animation when scrolled out
+            _isVisible = false;
           });
         }
       },
@@ -64,14 +67,15 @@ class _FunFactsSectionState extends State<FunFactsSection> {
             ),
           ),
           const SizedBox(height: 10),
+          // Animated grid of fun facts
           AnimatedOpacity(
             opacity: _isVisible ? 1.0 : 0.0, // Fade in when visible
             duration: const Duration(seconds: 1),
             child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true, // Prevents the grid from expanding infinitely
+              physics: const NeverScrollableScrollPhysics(), // Disables scrolling within the grid
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: 2, // Two columns in the grid
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
               ),
@@ -79,9 +83,9 @@ class _FunFactsSectionState extends State<FunFactsSection> {
               itemBuilder: (context, index) {
                 final stat = funStats[index];
                 return Card(
-                  color: stat['color'],
+                  color: stat['color'], 
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12), 
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -100,6 +104,7 @@ class _FunFactsSectionState extends State<FunFactsSection> {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 8),
+                        // Animated counter for the fun fact count
                         _isVisible
                             ? TweenAnimationBuilder(
                                 tween: IntTween(begin: 0, end: stat['count']),
@@ -114,7 +119,7 @@ class _FunFactsSectionState extends State<FunFactsSection> {
                                 ),
                               )
                             : const Text(
-                                '0',
+                                '0', // Default value when not visible
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w600,

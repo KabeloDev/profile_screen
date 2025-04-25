@@ -10,9 +10,9 @@ class ProfileViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final modeController = Provider.of<ModeController>(context);
-    
+
+    // Prepare bar data for the chart 
     IndividualBarData barData = IndividualBarData(
       monViews: profileViews[0],
       tueViews: profileViews[1],
@@ -24,9 +24,9 @@ class ProfileViews extends StatelessWidget {
     );
 
     return Card(
-      color: Colors.grey[90],
+      color: Colors.grey[90], 
       surfaceTintColor: Colors.grey[200],
-      elevation: 1,
+      elevation: 1, 
       margin: const EdgeInsets.all(8),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -38,15 +38,17 @@ class ProfileViews extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 15),
+            // Bar chart displaying the profile views for each day
             SizedBox(
               height: 300,
               child: BarChart(
                 BarChartData(
-                  maxY: 100,
-                  minY: 0,
-                  borderData: FlBorderData(show: false),
-                  gridData: FlGridData(show: false),
+                  maxY: 100, // Maximum value for the Y-axis
+                  minY: 0, // Minimum value for the Y-axis
+                  borderData: FlBorderData(show: false), // Hides the border
+                  gridData: FlGridData(show: false), // Hides the grid lines
                   titlesData: FlTitlesData(
+                    // Configures the bottom titles (days of the week)
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -54,6 +56,7 @@ class ProfileViews extends StatelessWidget {
                         getTitlesWidget: getBottomTitles,
                       ),
                     ),
+                    // Configures the left titles (Y-axis values)
                     leftTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -70,6 +73,7 @@ class ProfileViews extends StatelessWidget {
                         },
                       ),
                     ),
+                    // Hides the right and top titles
                     rightTitles: AxisTitles(
                       sideTitles: SideTitles(showTitles: false),
                     ),
@@ -77,27 +81,27 @@ class ProfileViews extends StatelessWidget {
                       sideTitles: SideTitles(showTitles: false),
                     ),
                   ),
-                  barGroups:
-                      barData.bars
-                          .map(
-                            (data) => BarChartGroupData(
-                              x: data.x,
-                              barRods: [
-                                BarChartRodData(
-                                  toY: data.y,
-                                  color: Colors.blueAccent,
-                                  width: 20,
-                                  borderRadius: BorderRadius.circular(6),
-                                  backDrawRodData: BackgroundBarChartRodData(
-                                    show: true,
-                                    toY: 100,
-                                    color: Colors.grey[300],
-                                  ),
-                                ),
-                              ],
+                  // Generates the bar groups for the chart
+                  barGroups: barData.bars
+                      .map(
+                        (data) => BarChartGroupData(
+                          x: data.x,
+                          barRods: [
+                            BarChartRodData(
+                              toY: data.y,
+                              color: Colors.blueAccent, 
+                              width: 20, 
+                              borderRadius: BorderRadius.circular(6),
+                              backDrawRodData: BackgroundBarChartRodData(
+                                show: true,
+                                toY: 100, // Background bar height
+                                color: Colors.grey[300], // Background bar color
+                              ),
                             ),
-                          )
-                          .toList(),
+                          ],
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
             ),
@@ -107,6 +111,7 @@ class ProfileViews extends StatelessWidget {
     );
   }
 
+  // Generates the bottom titles (days of the week) for the chart
   Widget getBottomTitles(double value, TitleMeta meta) {
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return SideTitleWidget(
@@ -119,13 +124,15 @@ class ProfileViews extends StatelessWidget {
   }
 }
 
+// Represents individual bar data for the chart
 class BarData {
-  final int x;
-  final double y;
+  final int x; // X-axis position
+  final double y; // Y-axis value
 
   BarData({required this.x, required this.y});
 }
 
+// Prepares bar data for each day of the week
 class IndividualBarData {
   final double monViews;
   final double tueViews;
@@ -145,13 +152,14 @@ class IndividualBarData {
     required this.sunViews,
   });
 
+  // Converts the daily views into a list of BarData objects
   List<BarData> get bars => [
-    BarData(x: 0, y: monViews),
-    BarData(x: 1, y: tueViews),
-    BarData(x: 2, y: wedViews),
-    BarData(x: 3, y: thuViews),
-    BarData(x: 4, y: friViews),
-    BarData(x: 5, y: satViews),
-    BarData(x: 6, y: sunViews),
-  ];
+        BarData(x: 0, y: monViews),
+        BarData(x: 1, y: tueViews),
+        BarData(x: 2, y: wedViews),
+        BarData(x: 3, y: thuViews),
+        BarData(x: 4, y: friViews),
+        BarData(x: 5, y: satViews),
+        BarData(x: 6, y: sunViews),
+      ];
 }

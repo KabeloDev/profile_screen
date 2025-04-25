@@ -8,6 +8,7 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
+  // List of user activities with details like title, description, timestamp, and icon
   final List<Map<String, dynamic>> activities = [
     {
       'icon': Icons.history,
@@ -44,46 +45,53 @@ class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Activity History'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Activity History'),
+        centerTitle: true, 
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Display a title based on whether there are activities
               Text(
                 activities.isNotEmpty
-                    ? 'Recent Activities'
-                    : 'No Activities Yet',
+                    ? 'Recent Activities' // Title when activities exist
+                    : 'No Activities', // Title when no activities exist
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 16),
+              // List of activities displayed as cards
               ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: activities.length,
+                shrinkWrap: true, // Prevents the list from expanding infinitely
+                physics: const NeverScrollableScrollPhysics(), // Disables scrolling within the list
+                itemCount: activities.length, 
                 itemBuilder: (context, index) {
                   final activity = activities[index];
                   return Card(
                     margin: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ListTile(
                       leading: Icon(
-                        activity['icon'],
+                        activity['icon'], 
                         color: Colors.blue,
                         size: 30,
                       ),
                       title: Text(
-                        activity['title'],
+                        activity['title'], 
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Description of the activity
                           Text(activity['description']),
                           const SizedBox(height: 4),
+                          // Timestamp of the activity
                           Text(
                             activity['timestamp'],
                             style: const TextStyle(
@@ -95,6 +103,7 @@ class _HistoryState extends State<History> {
                       ),
                       trailing: IconButton(
                         onPressed: () {
+                          // Deletes the activity and shows a confirmation message
                           setState(() {
                             activities.removeAt(index);
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -105,7 +114,7 @@ class _HistoryState extends State<History> {
                             );
                           });
                         },
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete), 
                       ),
                     ),
                   );

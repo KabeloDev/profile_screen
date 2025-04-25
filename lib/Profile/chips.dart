@@ -3,13 +3,13 @@ import 'package:profile_screen/Mode/mode.dart';
 import 'package:provider/provider.dart';
 
 class SkillsChips extends StatelessWidget {
+  // A map of skills with their descriptions
   final Map<String, String> skills = const {
-  'Flutter': 'I use Flutter to build modern, responsive UIs for mobile platforms with a strong focus on smooth animations and cross-platform compatibility.',
-  '.NET Core': 'I work with .NET Core to develop robust, scalable backend APIs that support dynamic data-driven applications.',
-  'SQL Server': 'I manage relational data using SQL Server, designing efficient schemas and writing queries to ensure data integrity and performance.',
-  'Firebase': 'I use Firebase for backend services like real-time databases, user authentication, and cloud storage to streamline app development.',
-};
-
+    'Flutter': 'I use Flutter to build modern, responsive UIs for mobile platforms with a strong focus on smooth animations and cross-platform compatibility.',
+    '.NET Core': 'I work with .NET Core to develop robust, scalable backend APIs that support dynamic data-driven applications.',
+    'SQL Server': 'I manage relational data using SQL Server, designing efficient schemas and writing queries to ensure data integrity and performance.',
+    'Firebase': 'I use Firebase for backend services like real-time databases, user authentication, and cloud storage to streamline app development.',
+  };
 
   const SkillsChips({super.key});
 
@@ -18,23 +18,26 @@ class SkillsChips extends StatelessWidget {
     final modeController = Provider.of<ModeController>(context);
 
     return Wrap(
-      spacing: 8,
+      spacing: 8, 
       children: skills.entries.map((entry) {
         return ActionChip(
           label: Text(
-            entry.key,
+            entry.key, 
             style: TextStyle(
-              color:  modeController.isDarkMode ? Colors.white : Colors.black,
+              color: modeController.isDarkMode ? Colors.white : Colors.black,
               fontWeight: FontWeight.bold,
             ),
           ),
-          backgroundColor:  modeController.isDarkMode ? Colors.grey[900] : Colors.grey[300],
-          elevation: 4,
-          shadowColor: modeController.isDarkMode ? Colors.white.withAlpha(100) : Colors.black.withAlpha(200),
+          backgroundColor: modeController.isDarkMode ? Colors.grey[900] : Colors.grey[300],
+          elevation: 4, 
+          shadowColor: modeController.isDarkMode
+              ? Colors.white.withAlpha(100)
+              : Colors.black.withAlpha(200),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12), 
           ),
           onPressed: () {
+            // Show a modal bottom sheet with the skill description
             showModalBottomSheet(
               context: context,
               shape: const RoundedRectangleBorder(
@@ -45,6 +48,7 @@ class SkillsChips extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    // Display the skill name in bold
                     Text(
                       entry.key,
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
@@ -52,6 +56,7 @@ class SkillsChips extends StatelessWidget {
                           ),
                     ),
                     const SizedBox(height: 10),
+                    // Display the skill description
                     Text(
                       entry.value,
                       style: Theme.of(context).textTheme.bodyMedium,

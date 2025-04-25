@@ -10,12 +10,14 @@ class AddAchievementDialog extends StatefulWidget {
 }
 
 class _AddAchievementDialogState extends State<AddAchievementDialog> {
+  // Controllers for the input fields
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
 
   @override
   void dispose() {
+    // Dispose of controllers to free up resources
     titleController.dispose();
     descriptionController.dispose();
     dateController.dispose();
@@ -25,11 +27,12 @@ class _AddAchievementDialogState extends State<AddAchievementDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Add Achievement'),
+      title: const Text('Add Achievement'), 
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Input field for the achievement title
             TextField(
               controller: titleController,
               decoration: const InputDecoration(
@@ -38,35 +41,40 @@ class _AddAchievementDialogState extends State<AddAchievementDialog> {
               ),
             ),
             const SizedBox(height: 10),
+            // Input field for the achievement description
             TextField(
               controller: descriptionController,
               decoration: const InputDecoration(
                 labelText: 'Description',
                 border: OutlineInputBorder(),
               ),
-              maxLines: 3,
+              maxLines: 3, 
             ),
             const SizedBox(height: 10),
+            // Input field for the achievement date
             TextField(
               controller: dateController,
               decoration: const InputDecoration(
                 labelText: 'Date',
                 border: OutlineInputBorder(),
               ),
-              keyboardType: TextInputType.datetime,
+              keyboardType: TextInputType.datetime, 
             ),
           ],
         ),
       ),
       actions: [
+        // Cancel button to close the dialog without saving
         TextButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context); 
           },
           child: const Text('Cancel'),
         ),
+        // Add button to save the new achievement
         TextButton(
           onPressed: () {
+            // Ensure all fields are filled before adding the achievement
             if (titleController.text.isNotEmpty &&
                 descriptionController.text.isNotEmpty &&
                 dateController.text.isNotEmpty) {
@@ -76,10 +84,12 @@ class _AddAchievementDialogState extends State<AddAchievementDialog> {
                 'date': dateController.text,
               };
 
+              // Add the new achievement to the list and notify listeners
               final achievementList =
                   Provider.of<AchievementList>(context, listen: false);
               achievementList.addAchievement(newAchievement);
 
+              // Show a success message
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Achievement added successfully!'),
@@ -87,7 +97,7 @@ class _AddAchievementDialogState extends State<AddAchievementDialog> {
                 ),
               );
 
-              Navigator.pop(context);
+              Navigator.pop(context); 
             }
           },
           child: const Text('Add'),

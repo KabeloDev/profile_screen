@@ -5,6 +5,7 @@ class MessagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // List of messages with sender, content, and timestamp
     final List<Map<String, String>> messages = [
       {
         'sender': 'John Doe',
@@ -34,18 +35,23 @@ class MessagesScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Messages'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Messages'),
+        centerTitle: true, 
+      ),
       body: ListView.builder(
-        itemCount: messages.length,
+        itemCount: messages.length, 
         itemBuilder: (context, index) {
           final message = messages[index];
           return ListTile(
-            leading: const CircleAvatar(child: Icon(Icons.person)),
-            title: Text(message['sender']!),
-            subtitle: Text(message['message']!),
-            trailing: Text(message['time']!),
+            leading: const CircleAvatar(
+              child: Icon(Icons.person), // Placeholder for sender's avatar
+            ),
+            title: Text(message['sender']!), // Sender's name
+            subtitle: Text(message['message']!), // Message content
+            trailing: Text(message['time']!), // Timestamp of the message
             onTap: () {
-              // Open the full-screen bottom modal sheet
+              // Open a detailed view of the message in a bottom modal sheet
               showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
@@ -55,16 +61,16 @@ class MessagesScreen extends StatelessWidget {
                 builder: (context) {
                   return DraggableScrollableSheet(
                     expand: false,
-                    initialChildSize: 0.9,
-                    maxChildSize: 1.0,
-                    minChildSize: 0.5,
+                    initialChildSize: 0.9, // Initial height of the modal
+                    maxChildSize: 1.0, // Maximum height of the modal
+                    minChildSize: 0.5, // Minimum height of the modal
                     builder: (context, scrollController) {
                       return Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Sender at the top
+                            // Header with sender's name and action buttons
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -76,19 +82,16 @@ class MessagesScreen extends StatelessWidget {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
-                                  icon: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Icon(Icons.call),
-                                    ],
-                                  ),
+                                  onPressed: () {
+                                    // Placeholder for video call action
+                                  },
+                                  icon: const Icon(Icons.call),
                                 ),
                               ],
                             ),
                             const Divider(),
                             const SizedBox(height: 10),
-                            // Message content
+                            // Message content displayed 
                             Expanded(
                               child: SingleChildScrollView(
                                 controller: scrollController,
@@ -98,23 +101,20 @@ class MessagesScreen extends StatelessWidget {
                                     Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        color: Colors.blue,
+                                        color: Colors.blue, // Message bubble color
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(10),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              message['message']!,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                              ),
-                                            ),
-                                          ],
+                                        padding: const EdgeInsets.all(10),
+                                        child: Text(
+                                          message['message']!,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 5),
+                                    const SizedBox(height: 5),
                                     Text(
                                       message['time']!,
                                       style: const TextStyle(
@@ -127,7 +127,7 @@ class MessagesScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            // Input field for chat at the bottom
+                            // Input field for sending a reply
                             TextField(
                               decoration: InputDecoration(
                                 labelText: 'Type a message...',
@@ -135,18 +135,20 @@ class MessagesScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 prefixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.emoji_emotions),
+                                  onPressed: () {
+                                    // Placeholder for emoji picker
+                                  },
+                                  icon: const Icon(Icons.emoji_emotions),
                                 ),
                                 suffixIcon: IconButton(
                                   icon: const Icon(Icons.send),
                                   onPressed: () {
-                                    // Handle sending a message
+                                    // Placeholder for sending a message
                                   },
                                 ),
                               ),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                           ],
                         ),
                       );

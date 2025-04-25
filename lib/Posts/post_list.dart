@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PostList extends ChangeNotifier {
+  // List of posts with details like title, content, image, likes, and comments
   final List<Map<String, dynamic>> _posts = [
     {
       'title': 'Walking my dog',
@@ -28,10 +29,12 @@ class PostList extends ChangeNotifier {
     },
   ];
 
+  // Getter to retrieve the list of posts
   List<Map<String, dynamic>> get posts => _posts;
 
+  // Adds a new post to the list and notifies listeners to update the UI
   void addPost(Map<String, dynamic> newPost) {
     _posts.add(newPost);
-    notifyListeners();
+    notifyListeners(); // Notifies listeners to rebuild UI with the updated list
   }
 }

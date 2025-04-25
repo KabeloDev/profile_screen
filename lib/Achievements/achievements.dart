@@ -12,10 +12,14 @@ class AchievementCarousel extends StatefulWidget {
 }
 
 class _AchievementCarouselState extends State<AchievementCarousel> {
+  // Opens a dialog to edit an existing achievement
   void showEditAchievementDialog(Map<String, dynamic> achievement) {
-    final TextEditingController titleController = TextEditingController(text: achievement['title']);
-    final TextEditingController contentController = TextEditingController(text: achievement['content']);
-    final TextEditingController dateController = TextEditingController(text: achievement['date']);
+    final TextEditingController titleController =
+        TextEditingController(text: achievement['title']);
+    final TextEditingController contentController =
+        TextEditingController(text: achievement['content']);
+    final TextEditingController dateController =
+        TextEditingController(text: achievement['date']);
 
     showDialog(
       context: context,
@@ -26,6 +30,7 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                // Input fields for editing the achievement details
                 TextField(
                   controller: titleController,
                   decoration: const InputDecoration(
@@ -54,12 +59,14 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
             ),
           ),
           actions: [
+            // Cancel button to close the dialog without saving changes
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
               },
               child: const Text('Cancel'),
             ),
+            // Save button to update the achievement details
             TextButton(
               onPressed: () {
                 setState(() {
@@ -67,7 +74,7 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
                   achievement['content'] = contentController.text;
                   achievement['date'] = dateController.text;
                 });
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Achievement updated successfully')),
                 );
@@ -80,10 +87,11 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
     );
   }
 
+  // Deletes an achievement from the list
   void deleteAchievement(Map<String, dynamic> achievement) {
     setState(() {
       final achievementList = Provider.of<AchievementList>(context, listen: false);
-      achievementList.achievement.remove(achievement); // Remove the achievement from the list
+      achievementList.achievement.remove(achievement);
     });
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Achievement deleted successfully')),
@@ -93,23 +101,23 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
   @override
   Widget build(BuildContext context) {
     final modeController = Provider.of<ModeController>(context);
-    final achievementList = Provider.of<AchievementList>(context); // Access the AchievementList from the provider
-    final achievement = achievementList.achievement;
+    final achievementList = Provider.of<AchievementList>(context); // Access the list of achievements
+    final achievements = achievementList.achievement;
 
     return CarouselSlider(
       options: CarouselOptions(
-        height: 400.0,
-        enlargeCenterPage: true,
-        enableInfiniteScroll: true,
+        height: 400.0, 
+        enlargeCenterPage: true, 
+        enableInfiniteScroll: true, 
       ),
-      items: achievement.map((achievement) {
+      items: achievements.map((achievement) {
         return Builder(
           builder: (BuildContext context) {
             return Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(15.0), 
               ),
-              elevation: 5,
+              elevation: 5, 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -124,13 +132,11 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 5,
-                      right: 5,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Achievement title
                         Text(
                           achievement['title']!,
                           style: const TextStyle(
@@ -139,16 +145,19 @@ class _AchievementCarouselState extends State<AchievementCarousel> {
                           ),
                         ),
                         const SizedBox(height: 5),
+                        // Achievement content/description
                         Text(
                           achievement['content']!,
                           style: const TextStyle(fontSize: 14),
                         ),
                         const SizedBox(height: 5),
+                        // Achievement date
                         Text(
                           achievement['date']!,
                           style: const TextStyle(fontSize: 14),
                         ),
                         const SizedBox(height: 5),
+                        // Row of action buttons (edit and delete)
                         Row(
                           children: [
                             IconButton(

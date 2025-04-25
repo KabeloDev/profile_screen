@@ -19,18 +19,22 @@ class SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
+    // Initialize the animation controller for the fade-in effect
     _controller = AnimationController(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 3), // Animation duration
       vsync: this,
     );
 
+    // Define a curved animation for smooth transitions
     _animation = CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
     );
 
+    // Start the animation
     _controller.forward();
 
+    // Navigate to the ProfileScreen after 3 seconds
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -41,6 +45,7 @@ class SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
+    // Dispose of the animation controller to free resources
     _controller.dispose();
     super.dispose();
   }
@@ -48,10 +53,10 @@ class SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[900], 
       body: Center(
         child: FadeTransition(
-          opacity: _animation,
+          opacity: _animation, // Apply the fade-in animation
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -60,8 +65,8 @@ class SplashScreenState extends State<SplashScreen>
                 color: Colors.white,
                 size: 100.0,
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Welcome',
                 style: TextStyle(
                   color: Colors.white,

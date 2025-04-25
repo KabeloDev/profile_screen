@@ -10,9 +10,16 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        // Handles light/dark mode switching
         ChangeNotifierProvider(create: (context) => ModeController()),  
+
+        // Manages the list of posts
         ChangeNotifierProvider(create: (context) => PostList()),  
+
+        // Manages the list of work experiences
         ChangeNotifierProvider(create: (context) => WorkList()), 
+
+        // Manages the list of achievements
         ChangeNotifierProvider(create: (context) => AchievementList()), 
       ],
       child: MyApp(),
@@ -25,14 +32,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Access the mode controller to determine the app's theme
     final modeController = Provider.of<ModeController>(context);
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // Hides the debug banner in the app
       theme: ThemeData(
+        // Dynamically applies light or dark theme based on user preference
         brightness: modeController.isDarkMode ? Brightness.dark : Brightness.light,
       ),
-      home: SplashScreen(),
+      home: SplashScreen(), // Splash screen displayed when the app starts
     );
   }
 }
