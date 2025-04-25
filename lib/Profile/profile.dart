@@ -31,7 +31,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   //User profile information default values
   String firstName = 'Kabelo';
   String lastName = 'Makhanya';
-  String bio = 'I am a software developer.';
+  String bio = 'Passionate software developer with a focus on building innovative and user-friendly applications.';
   String profilePicture = 'assets/me.png';
 
   // Map interests to corresponding icons
