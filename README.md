@@ -23,13 +23,13 @@ A mobile developer internship task focused on building a polished, feature-rich 
 🔹 Work Experience Section: Add, edit, and delete professional work history<br/>
 🔹 Achievements Section: Add, edit, and delete personal milestones<br/>
 🔹 Top Skills Section: Static showcase of top skills<br/>
-🔹 Fun Facts Section: Static display of personal fun facts<br/>
+🔹 Fun Facts Section: Static, animated display of personal fun facts<br/>
 🔹 Animated Goal Progress Bar: Visual progress tracking of personal goals<br/>
 🔹 Dashboard Analytics: Visually appealing user statistics dashboard<br/>
-🔹 Notifications Center: User notifications list<br/>
+🔹 Notifications Center: Static, hardcoded user notifications<br/>
 🔹 Dark/Light Mode Toggle: Full theme switching<br/>
-🔹 Activity History: User activity on the profile<br/>
-🔹 Messages: Open chat conversations <br/>
+🔹 Activity History: Display of user activity timeline on the profile<br/>
+🔹 Messages: Open individual chat conversations <br/>
 
 <br/>
 
