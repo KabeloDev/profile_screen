@@ -26,7 +26,7 @@ A mobile developer internship task focused on building a polished, feature-rich 
 🔹 Fun Facts Section: Static, animated display of personal fun facts<br/>
 🔹 Animated Goal Progress Bar: Visual progress tracking of personal goals<br/>
 🔹 Dashboard Analytics: Visually appealing user statistics dashboard<br/>
-🔹 Notifications Center: Static, hardcoded user notifications<br/>
+🔹 Notifications Center: User notifications list<br/>
 🔹 Dark/Light Mode Toggle: Full theme switching<br/>
 🔹 Activity History: Display of user activity timeline on the profile<br/>
 🔹 Messages: Open individual chat conversations <br/>
