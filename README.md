@@ -93,6 +93,45 @@ Activity history: <br/>
 <br />
 <br />
 
+<b>Light mode</b>
+
+<p align="center">
+Profile: <br/>
+<img src="https://i.imgur.com/GRxbfNG.png" height="80%" width="80%" />
+<br />
+<br />
+<img src="https://i.imgur.com/M9d4ClU.png" height="80%" width="80%" />
+<br />
+<br />
+<img src="https://i.imgur.com/HaLOqds.png" height="80%" width="80%" />
+<br />
+<br />
+Profile update: <br/>
+<img src="https://i.imgur.com/T5yJlnx.png" height="80%" width="80%" />
+<br />
+<br />
+Dashboard: <br/>
+<img src="https://i.imgur.com/3kj0ndT.png" height="80%" width="80%" />
+<br />
+<br />
+Messages: <br/>
+<img src="https://i.imgur.com/F4xAeHF.png" height="80%" width="80%" />
+<br />
+<br />
+Chat: <br/>
+<img src="https://i.imgur.com/03gkiYa.png" height="80%" width="80%" />
+<br />
+<br />
+Notifications: <br/>
+<img src="https://i.imgur.com/sJkErrH.png" height="80%" width="80%" />
+<br />
+<br />
+Activity history: <br/>
+<img src="https://i.imgur.com/JNZtcOS.png" height="80%" width="80%" />
+<br />
+<br />
+
+
 
 
 
