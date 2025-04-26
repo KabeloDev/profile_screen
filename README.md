@@ -18,6 +18,7 @@ A mobile developer internship task focused on building a polished, feature-rich 
 <br/>
 
 <b>🚀 Additional Features Added:</b><br/>
+🔹 Splash screen on app startup <br/>
 🔹 Posts Section: Add, delete, like, share, and comment on posts dynamically<br/>
 🔹 Work Experience Section: Add, edit, and delete professional work history<br/>
 🔹 Achievements Section: Add, edit, and delete personal milestones<br/>
@@ -28,7 +29,7 @@ A mobile developer internship task focused on building a polished, feature-rich 
 🔹 Notifications Center: User notifications list<br/>
 🔹 Dark/Light Mode Toggle: Full theme switching<br/>
 🔹 Activity History: User activity on the profile<br/>
-🔹 Message Threads: Open chat conversations <br/>
+🔹 Messages: Open chat conversations <br/>
 
 <br/>
 
