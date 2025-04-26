@@ -18,7 +18,7 @@ A mobile developer internship task focused on building a polished, feature-rich 
 <br/>
 
 <b>🚀 Additional Features Added:</b><br/>
-🔹 Splash screen on app startup <br/>
+🔹 Splash Screen on App Startup <br/>
 🔹 Posts Section: Add, delete, like, share, and comment on posts dynamically<br/>
 🔹 Work Experience Section: Add, edit, and delete professional work history<br/>
 🔹 Achievements Section: Add, edit, and delete personal milestones<br/>
