@@ -55,52 +55,45 @@ A mobile developer internship task focused on building a polished, feature-rich 
 
 <h2>Program walk-through:</h2>
 
+<b>Dark mode</b>
+
 <p align="center">
-Home: <br/>
-<img src="https://i.imgur.com/NocgakH.png" height="80%" width="80%" />
-<br />
-<br />
-<img src="https://i.imgur.com/tfy6Vxz.png" height="80%" width="80%" />
-<br />
-<br />
-<img src="https://i.imgur.com/JQ48igB.png" height="80%" width="80%" />
-<br />
-<br />
 Profile: <br/>
-<img src="https://i.imgur.com/M209XwF.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/I6JS3Uo.png" height="80%" width="80%" />
 <br />
 <br />
-Exercise Library: <br/>
-<img src="https://i.imgur.com/o9qB6gF.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/XE8boS5.png" height="80%" width="80%" />
 <br />
 <br />
-Workout Planner: <br/>
-<img src="https://i.imgur.com/Pya3jDm.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/W2UibVX.png" height="80%" width="80%" />
 <br />
 <br />
-Custom Exercise: <br/>
-<img src="https://i.imgur.com/GRkzJkY.png" height="80%" width="80%" />
-<br />
-<br />
-Calendar: <br/>
-<img src="https://i.imgur.com/oM5R9op.png" height="80%" width="80%" />
+Profile update: <br/>
+<img src="https://i.imgur.com/jBm9M5U.png" height="80%" width="80%" />
 <br />
 <br />
 Dashboard: <br/>
-<img src="https://i.imgur.com/HPMj2d6.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/mR2AhTz.png" height="80%" width="80%" />
 <br />
 <br />
-<img src="https://i.imgur.com/KR8Ld1J.png" height="80%" width="80%" />
+Messages: <br/>
+<img src="https://i.imgur.com/WWbixPc.png" height="80%" width="80%" />
 <br />
 <br />
-Register: <br/>
-<img src="https://i.imgur.com/il5nHLj.png" height="80%" width="80%" />
+Chat: <br/>
+<img src="https://i.imgur.com/RbdyNKH.png" height="80%" width="80%" />
 <br />
 <br />
-Sign in: <br/>
-<img src="https://i.imgur.com/MlaDEwW.png" height="80%" width="80%" />
+Notifications: <br/>
+<img src="https://i.imgur.com/XQLMCcL.png" height="80%" width="80%" />
 <br />
 <br />
+Activity history: <br/>
+<img src="https://i.imgur.com/VZpz3yP.png" height="80%" width="80%" />
+<br />
+<br />
+
+
 
 
 
