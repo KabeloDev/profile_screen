@@ -11,7 +11,7 @@ class EngagementChart extends StatelessWidget {
       surfaceTintColor: Colors.grey[200],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
