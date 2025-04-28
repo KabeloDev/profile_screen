@@ -117,7 +117,7 @@ class EngagementChart extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 20), 
+            const SizedBox(width: 10), 
             // Text description on the right
             Expanded(
               child: Column(
