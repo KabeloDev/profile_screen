@@ -21,6 +21,7 @@ class SkillsChips extends StatelessWidget {
       spacing: 8, 
       children: skills.entries.map((entry) {
         return ActionChip(
+          padding: const EdgeInsets.all(0),
           label: Text(
             entry.key, 
             style: TextStyle(
