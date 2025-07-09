@@ -60,37 +60,37 @@ A mobile developer internship task focused on building a polished, feature-rich 
 
 <p align="center">
 Profile: <br/>
-<img src="https://i.imgur.com/I6JS3Uo.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/I6JS3Uo.png" height="500%" width="100%" />
 <br />
 <br />
-<img src="https://i.imgur.com/XE8boS5.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/XE8boS5.png" height="500%" width="100%" />
 <br />
 <br />
-<img src="https://i.imgur.com/W2UibVX.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/W2UibVX.png" height="500%" width="100%" />
 <br />
 <br />
 Profile update: <br/>
-<img src="https://i.imgur.com/jBm9M5U.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/jBm9M5U.png" height="500%" width="100% />
 <br />
 <br />
 Dashboard: <br/>
-<img src="https://i.imgur.com/mR2AhTz.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/mR2AhTz.png" height="500%" width="100% />
 <br />
 <br />
 Messages: <br/>
-<img src="https://i.imgur.com/WWbixPc.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/WWbixPc.png" height="500%" width="100% />
 <br />
 <br />
 Chat: <br/>
-<img src="https://i.imgur.com/RbdyNKH.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/RbdyNKH.png" height="500%" width="100% />
 <br />
 <br />
 Notifications: <br/>
-<img src="https://i.imgur.com/XQLMCcL.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/XQLMCcL.png" height="500%" width="100% />
 <br />
 <br />
 Activity history: <br/>
-<img src="https://i.imgur.com/VZpz3yP.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/VZpz3yP.png" height="500%" width="100% />
 <br />
 <br />
 
@@ -98,37 +98,37 @@ Activity history: <br/>
 
 <p align="center">
 Profile: <br/>
-<img src="https://i.imgur.com/GRxbfNG.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/GRxbfNG.png" height="500%" width="100% />
 <br />
 <br />
-<img src="https://i.imgur.com/M9d4ClU.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/M9d4ClU.png" height="500%" width="100% />
 <br />
 <br />
-<img src="https://i.imgur.com/HaLOqds.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/HaLOqds.png" height="500%" width="100% />
 <br />
 <br />
 Profile update: <br/>
-<img src="https://i.imgur.com/T5yJlnx.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/T5yJlnx.png" height="500%" width="100% />
 <br />
 <br />
 Dashboard: <br/>
-<img src="https://i.imgur.com/3kj0ndT.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/3kj0ndT.png" height="500%" width="100%" />
 <br />
 <br />
 Messages: <br/>
-<img src="https://i.imgur.com/F4xAeHF.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/F4xAeHF.png" height="500%" width="100% />
 <br />
 <br />
 Chat: <br/>
-<img src="https://i.imgur.com/03gkiYa.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/03gkiYa.png" height="500%" width="100% />
 <br />
 <br />
 Notifications: <br/>
-<img src="https://i.imgur.com/sJkErrH.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/sJkErrH.png" height="500%" width="100% />
 <br />
 <br />
 Activity history: <br/>
-<img src="https://i.imgur.com/JNZtcOS.png" height="80%" width="80%" />
+<img src="https://i.imgur.com/JNZtcOS.png" height="500%" width="100% />
 <br />
 <br />
 
