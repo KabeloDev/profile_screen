@@ -70,27 +70,27 @@ Profile: <br/>
 <br />
 <br />
 Profile update: <br/>
-<img src="https://i.imgur.com/jBm9M5U.png" height="500%" width="100% />
+<img src="https://i.imgur.com/jBm9M5U.png" height="500%" width="100%" />
 <br />
 <br />
 Dashboard: <br/>
-<img src="https://i.imgur.com/mR2AhTz.png" height="500%" width="100% />
+<img src="https://i.imgur.com/mR2AhTz.png" height="500%" width="100%" />
 <br />
 <br />
 Messages: <br/>
-<img src="https://i.imgur.com/WWbixPc.png" height="500%" width="100% />
+<img src="https://i.imgur.com/WWbixPc.png" height="500%" width="100%" />
 <br />
 <br />
 Chat: <br/>
-<img src="https://i.imgur.com/RbdyNKH.png" height="500%" width="100% />
+<img src="https://i.imgur.com/RbdyNKH.png" height="500%" width="100%" />
 <br />
 <br />
 Notifications: <br/>
-<img src="https://i.imgur.com/XQLMCcL.png" height="500%" width="100% />
+<img src="https://i.imgur.com/XQLMCcL.png" height="500%" width="100%" />
 <br />
 <br />
 Activity history: <br/>
-<img src="https://i.imgur.com/VZpz3yP.png" height="500%" width="100% />
+<img src="https://i.imgur.com/VZpz3yP.png" height="500%" width="100%" />
 <br />
 <br />
 
@@ -98,17 +98,17 @@ Activity history: <br/>
 
 <p align="center">
 Profile: <br/>
-<img src="https://i.imgur.com/GRxbfNG.png" height="500%" width="100% />
+<img src="https://i.imgur.com/GRxbfNG.png" height="500%" width="100%" />
 <br />
 <br />
-<img src="https://i.imgur.com/M9d4ClU.png" height="500%" width="100% />
+<img src="https://i.imgur.com/M9d4ClU.png" height="500%" width="100%" />
 <br />
 <br />
-<img src="https://i.imgur.com/HaLOqds.png" height="500%" width="100% />
+<img src="https://i.imgur.com/HaLOqds.png" height="500%" width="100%" />
 <br />
 <br />
 Profile update: <br/>
-<img src="https://i.imgur.com/T5yJlnx.png" height="500%" width="100% />
+<img src="https://i.imgur.com/T5yJlnx.png" height="500%" width="100%" />
 <br />
 <br />
 Dashboard: <br/>
@@ -116,19 +116,19 @@ Dashboard: <br/>
 <br />
 <br />
 Messages: <br/>
-<img src="https://i.imgur.com/F4xAeHF.png" height="500%" width="100% />
+<img src="https://i.imgur.com/F4xAeHF.png" height="500%" width="100%" />
 <br />
 <br />
 Chat: <br/>
-<img src="https://i.imgur.com/03gkiYa.png" height="500%" width="100% />
+<img src="https://i.imgur.com/03gkiYa.png" height="500%" width="100%" />
 <br />
 <br />
 Notifications: <br/>
-<img src="https://i.imgur.com/sJkErrH.png" height="500%" width="100% />
+<img src="https://i.imgur.com/sJkErrH.png" height="500%" width="100%" />
 <br />
 <br />
 Activity history: <br/>
-<img src="https://i.imgur.com/JNZtcOS.png" height="500%" width="100% />
+<img src="https://i.imgur.com/JNZtcOS.png" height="500%" width="100%" />
 <br />
 <br />
 
